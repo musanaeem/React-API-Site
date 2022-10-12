@@ -1,25 +1,49 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { Component } from 'react'
+import {
+  BrowserRouter as Router,
+} from 'react-router-dom';
+import {RoutingWrapper} from './components/Routing';
+import { Helmet } from 'react-helmet';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  
+  constructor(props){
+    super(props);
+
+    this.state = {
+    };
+    //this.fetchTasks = this.fetchTasks.bind(this);
+  }
+
+  
+  render() {
+    return (
+      <div className='Container'>
+
+        <Router>
+          <RoutingWrapper/>
+        </Router>
+      </div>
+    )
+  }
+
+  // componentWillMount(){
+  //   //this.fetchTasks();
+  // }
+  
+
+  // fetchTasks(){
+   
+  //   fetch('http://localhost:8000/api/blog/', {headers: {
+  //     'Authorization': Cookies.get("musa.naeem%40arbisoft.com")
+  //   }})
+  //   .then(response => response.json())
+  //   .then(data => 
+  //     console.log('Data: ', data));
+  // }
+  
+  
+
+
 }
-
-export default App;
