@@ -32,7 +32,6 @@ class Routing extends Component {
       credentials: credentials,
     });
 
-
     const options = {
         method: 'POST',
         headers: {
@@ -47,21 +46,16 @@ class Routing extends Component {
       .then(response => response.json())
       .then(data => {
         if(!data.detail){
-          Cookies.set('jwt', JSON.stringify(data)); //was saved as email before
+          Cookies.set('jwt', JSON.stringify(data));
           this.props.navigator('/home');
         }
         else{
           this.setState({
             error: data.detail
           })
-        } 
-        
+        }
       });
-
-}
-
-clickHandler = () => this.props.navigator('/bio');
-
+  }
 
   render() {
     return (

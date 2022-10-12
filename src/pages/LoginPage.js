@@ -17,28 +17,26 @@ export default class LoginPage extends Component {
                 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous"/>
             </Helmet>
 
-        <div className="container h-100">
+            <div className="container h-100">
 
-            <div className="d-flex justify-content-center h-100">
-                <div className="user-card">
-                    <div className="d-flex justify-content-center">
-                        <h3 className="form-title">LOGIN</h3>
-                    </div>
+                <div className="d-flex justify-content-center h-100">
+                    <div className="user-card">
+                        <div className="d-flex justify-content-center">
+                            <h3 className="form-title">LOGIN</h3>
+                        </div>
 
-                    <div className="d-flex justify-content-center form-container">
-                        <LoginForm onLogin = {this.props.onLogin} error={this.props.error}/>
-                    </div>
+                        <div className="d-flex justify-content-center form-container">
+                            <LoginForm onLogin = {this.props.onLogin} error={this.props.error}/>
+                        </div>
 
-                    {/*display errors errors here */}
-
-                    <div className="mt-4">
-                        <div className="d-flex justify-content-center links">
-                            Don't have an account? <a href="{% url 'register' %}" className="ml-2">Sign Up</a>
+                        <div className="mt-4">
+                            <div className="d-flex justify-content-center links">
+                                Don't have an account? <a href="{% url 'register' %}" className="ml-2">Sign Up</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     )
   }
