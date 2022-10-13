@@ -17,44 +17,46 @@ class Routing extends Component {
   constructor(props){
     super(props);
     this.state = {
-      error: "",
-      credentials: {
-        email: '',
-        password: ''
-      }
+      error: ''
     };
   }
 
 
-  logUserIn = (credentials) => {
-    
-    this.setState({
-      credentials: credentials,
-    });
+  getOptions = credentials => {
 
     const options = {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': null
-        },
-        body: JSON.stringify(credentials),
-      };
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': null
+      },
+      body: JSON.stringify(credentials),
+    };
+
+    return options
+  }
   
-      fetch('http://localhost:8000/api/login/', options)
-      .then(response => response.json())
-      .then(data => {
-        if(!data.detail){
-          Cookies.set('jwt', JSON.stringify(data));
-          this.props.navigator('/home');
-        }
-        else{
-          this.setState({
-            error: data.detail
-          })
-        }
-      });
+
+
+  logUserIn = credentials => {
+    
+    let options = this.getOptions(credentials)
+
+
+    fetch('http://localhost:8000/api/login/', options)
+    .then(response => response.json())
+    .then(data => {
+      if(!data.detail){
+        Cookies.set('jwt', JSON.stringify(data));
+        this.props.navigator('/home');
+      }
+      else{
+        this.setState({
+          error: data.detail
+        })
+      }
+    });
   }
 
   render() {
@@ -64,7 +66,7 @@ class Routing extends Component {
             <Route path='/login' element={<LoginPage  onLogin = {this.logUserIn} error = {this.state.error}/> }/>
           </Route>
             
-          <Route element={<ProtectedRoutes isLoggedIn = {this.state.isLoggedIn}/> }>
+          <Route element={<ProtectedRoutes /> }>
             <Route path='/home' element={<HomePageWrapper /> }/>
           </Route>
       </Routes>
