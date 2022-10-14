@@ -12,15 +12,14 @@ import ProtectedRoutes from './ProtectedRoutes';
 import RegisterPage from '../pages/RegisterPage';
 
 
-
 class Routing extends Component {
-
 
   constructor(props){
     super(props);
 
     this.state = {
-      error: ''
+      error: '',
+      successMessage: ''
     };
 
   }
@@ -62,18 +61,25 @@ class Routing extends Component {
   registerUser = (credentials) => {
 
     let options = this.getOptions(credentials);
+    const errorMessage = 'This field is required.'
 
     fetch('http://localhost:8000/api/register/', options)
     .then(response => response.json())
     .then(data => {
-      if(!data.detail){
+      console.log(data)
+      //might change with object.values().every()
+      if(data.username != errorMessage && data.password != errorMessage && data.email != errorMessage && data.date_of_birth != errorMessage){
+        this.setState({
+          successMessage: "Registration Successful"
+        })
         this.props.navigator('/login');
       }
       else{
         this.setState({
-          error: data.detail
+          error: "Registration failed"
         })
       }
+
     });
 
   }
@@ -82,11 +88,12 @@ class Routing extends Component {
     return (
       <Routes>
           <Route element={<ProtectedLogin /> }>
-            <Route path='/login' element={<LoginPage  onLogin = {this.logUserIn} error = {this.state.error}/> }/>
-          </Route>
-            
-          <Route element={<ProtectedRoutes /> }>
+            <Route path='/login' element={<LoginPage  onLogin = {this.logUserIn} error = {this.state.error} successMessage = {this.state.successMessage}/> }/>
             <Route path='/register' element={<RegisterPage onRegister = {this.registerUser} error = {this.state.error} />} />
+
+          </Route>
+
+          <Route element={<ProtectedRoutes /> }>
             <Route path='/home' element={<HomePageWrapper /> }/>
           </Route>
       </Routes>

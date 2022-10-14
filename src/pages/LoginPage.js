@@ -21,12 +21,18 @@ export default class LoginPage extends Component {
                         <LoginForm onLogin = {this.props.onLogin} error={this.props.error}/>
                     </div>
 
+                    <div id="successMessage">
+                        <p>{this.props.successMessage}</p>
+                    </div>
+
                     <div className="mt-4">
                         <div className="d-flex justify-content-center links">
                             Don't have an account? <a href="{% url 'register' %}" className="ml-2">Sign Up</a>
                         </div>
                     </div>
                 </div>
+
+                
             </div>
         </div>
     )
