@@ -10,9 +10,7 @@ import ProtectedRoutes from './ProtectedRoutes';
 import RegisterPage from '../pages/RegisterPage';
 
 
-
 class Routing extends Component {
-
 
   constructor(props){
     super(props);

@@ -15,7 +15,7 @@ const RegisterPage = (props) => {
 
     const registerTag = () => {
         return(
-            <RegisterForm />
+            <RegisterForm onRegister = {props.onRegister} error = {props.error}/>
         )
     }
 

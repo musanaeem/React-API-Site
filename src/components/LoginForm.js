@@ -19,7 +19,7 @@ export default class LoginForm extends Component {
         credentials[event.target.name] = event.target.value;
         this.setState({credentials: credentials});
     }
-    
+
 
     login = event => {
         event.preventDefault();

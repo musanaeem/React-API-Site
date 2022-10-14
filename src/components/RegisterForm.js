@@ -57,7 +57,7 @@ function RegisterForm(props) {
             <div className="input-group-append">
                 <span className="input-group-text"><i className="fas fa-calendar-alt"></i></span>
             </div>
-            <input type="date" name="dateOfBirth" placeholder="Date of Birth..." className="form-control" value={credentials.dateOfBirth} onChange={inputChanged}/>
+            <input type="date" name="date_of_birth" placeholder="Date of Birth..." className="form-control" value={credentials.date_of_birth} onChange={inputChanged}/>
         </div>
         
         
@@ -80,7 +80,7 @@ function RegisterForm(props) {
         <p id="error"> {props.error} </p>
 
         <div id="login-container" className="d-flex justify-content-center mt-3 login-container">
-          <input id="login-btn" className="btn login-btn" type="submit" value="Login" onClick={register}/>
+          <input id="login-btn" className="btn login-btn" type="submit" value="Register" onClick={register}/>
         </div>
       </form>
   )
