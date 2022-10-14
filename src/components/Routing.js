@@ -29,7 +29,8 @@ class Routing extends Component {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': null
+        'Authorization': null,
+        'X-CSRFToken': Cookies.get('csrftoken')
       },
       body: JSON.stringify(credentials),
     };
