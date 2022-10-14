@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import LoginForm from '../components/LoginForm';
 import '../components/Login.css';
 import '../components/baseStyle.css';
-import { Helmet } from 'react-helmet';
-
 
 export default class LoginPage extends Component {
 
