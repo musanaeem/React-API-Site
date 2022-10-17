@@ -5,7 +5,7 @@ import {
   } from 'react-router-dom';
 import {LoginWrapper} from '../pages/LoginPage';
 import {HomePageWrapper} from '../pages/HomePage';
-import ProtectedLogin from './ProtectedLogin';
+import ProtectedAuthentication from './ProtectedLogin';
 import ProtectedRoutes from './ProtectedRoutes';
 
 
@@ -22,7 +22,7 @@ class Routing extends Component {
   render() {
     return (
       <Routes>
-          <Route element={<ProtectedLogin /> }>
+          <Route element={<ProtectedAuthentication /> }>
             <Route path='/login' element={<LoginWrapper /> }/>
           </Route>
             
