@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import CSRFToken from './csrftoken'
 
 export default class LoginForm extends Component {
 

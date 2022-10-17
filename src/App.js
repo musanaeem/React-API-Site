@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {
   BrowserRouter as Router,
 } from 'react-router-dom';
-import {RoutingWrapper} from './components/Routing';
+import Routing from './components/Routing';
 
 export default class App extends Component {
   
@@ -10,7 +10,7 @@ export default class App extends Component {
     return (
       <div className='Container'>
         <Router>
-          <RoutingWrapper/>
+          <Routing/>
         </Router>
       </div>
     )

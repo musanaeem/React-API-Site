@@ -2,8 +2,37 @@ import React, { Component } from 'react'
 import LoginForm from '../components/LoginForm';
 import '../components/Login.css';
 import '../components/baseStyle.css';
+import { useNavigate } from 'react-router-dom';
+import LoginRequest from '../services/LoginRequest';
 
-export default class LoginPage extends Component {
+class LoginPage extends Component {
+
+    constructor(props){
+        super(props);
+
+        this.state = {
+            error: ''
+        }
+
+        this.logUserIn = this.logUserIn.bind();
+    }
+
+    logUserIn = (credentials) => {
+
+        LoginRequest(credentials).then( data => {
+            if(!data.detail){
+                window.localStorage.setItem('blogSiteUserLoggedIn',true);
+                this.props.navigator('/home');
+              }
+            else{
+                this.setState({
+                  error: data.detail
+                })
+              }
+        });
+    } 
+    
+    
 
   render() {
     return ( 
@@ -18,7 +47,7 @@ export default class LoginPage extends Component {
                         </div>
 
                         <div className="d-flex justify-content-center form-container">
-                            <LoginForm onLogin = {this.props.onLogin} error={this.props.error}/>
+                            <LoginForm onLogin = {this.logUserIn} error={this.state.error}/>
                         </div>
 
                         <div className="mt-4">
@@ -33,3 +62,11 @@ export default class LoginPage extends Component {
     )
   }
 }
+
+
+export function LoginWrapper(props){
+    const navigator = useNavigate();
+    return (<LoginPage navigator={navigator}></LoginPage>)
+  }
+
+export default LoginPage;
