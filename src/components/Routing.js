@@ -8,6 +8,7 @@ import {HomePageWrapper} from '../pages/HomePage';
 import ProtectedAuthentication from './ProtectedAuthentication';
 import ProtectedRoutes from './ProtectedRoutes';
 import RegisterPage from '../pages/RegisterPage';
+import Cookies from 'js-cookie';
 
 
 class Routing extends Component {
