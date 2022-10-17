@@ -65,7 +65,7 @@ small{
     color: red;
 }
 
-#successMessage{
+.successMessage{
     color:green;
     text-align: center;
     margin-top: 10px;

@@ -1,17 +1,9 @@
-import React, {useState} from 'react'
-import { useNavigate } from 'react-router-dom'
+import React from 'react'
 import FormContainer from '../components/FormContainer';
 import RegisterForm from '../components/RegisterForm';
 
 
-// destructure props like ({name, age, ...props})
 const RegisterPage = (props) => {
-    
-    const [credentials, setCredentials] = useState("") 
-    
-    const navigator = useNavigate();
-  
-    //const goHome = () => navigator('/home');
 
     const registerTag = () => {
         return(
@@ -21,7 +13,7 @@ const RegisterPage = (props) => {
 
     return (
         <div>
-            <FormContainer form={registerTag} title='Register' alternateTitle='Login'  accountMessage='Already have an account?'/>
+            <FormContainer form={registerTag} title='Register' alternateTitle='Login'  accountMessage='Already have an account?' link='/login'/>
         </div>
     )
 }
