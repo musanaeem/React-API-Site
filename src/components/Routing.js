@@ -60,6 +60,13 @@ class Routing extends Component {
     });
   }
 
+  componentDidMount() {
+    if (!window.localStorage.getItem('blogSiteUserLoggedIn'))
+    {
+      window.localStorage.setItem('blogSiteUserLoggedIn', false);
+    }
+  }
+
   render() {
     return (
       <Routes>

@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 class HomePage extends Component {
   
-  removeCookie = () => {
-    Cookies.remove('jwt');
+  logoutUser = () => {
+    window.localStorage.setItem('blogSiteUserLoggedIn', false);
     this.props.navigator('/login');
   }
   
@@ -13,7 +13,7 @@ class HomePage extends Component {
     return (
       <div>
         <h1>Home Page</h1>
-        <button onClick={this.removeCookie}> Logout </button>
+        <button onClick={this.logoutUser}> Logout </button>
       </div>
     )
   }
