@@ -7,11 +7,18 @@ function RegisterForm(props) {
         username: '',
         firstName: '',
         lastName: '',
+        date_of_birth: '',
         password: '',
         passwordConfirmation: ''
 
     });
-    const [formErrors, setFormErrors] = useState({});
+    const [formErrors, setFormErrors] = useState({
+        email: '',
+        username: '',
+        firstName: '',
+        lastName: '',
+        passwords: ''
+    });
     const [disabled, setDisabled] = useState(true);
     const [results, setResults] = useState ({
         "username": false,
@@ -24,13 +31,9 @@ function RegisterForm(props) {
 
     const inputChanged = event => {
 
-        //ask mentor
-        const credentialChanged = credentials;
-        credentialChanged[event.target.name] = event.target.value;
-
         setCredentials({
-            [event.target.name]: event.target.value,
-            ...credentials
+            ...credentials,
+            [event.target.name]: event.target.value
         });
 
         console.log(credentials);
@@ -45,17 +48,22 @@ function RegisterForm(props) {
     const validateUsername = () => {
         // In case there was already an error displayed
         clearError('username');
-        // const usernameValue = credentials.username.trim();
-        // setResults({
-        //     username: isValidUsername(usernameValue)
-        // });
-        // unlockOrLockSubmit();
+        const usernameValue = credentials.username.trim();
+        setResults({
+            ...results,
+            username: isValidUsername(usernameValue),
+        });
+        unlockOrLockSubmit();
+        console.log(results);
     }
     
     
     // Clears any errors that are displayed on a field already
     function clearError(input){
-        setFormErrors({[input]:''});
+        setFormErrors({
+            ...formErrors,
+            [input]:''
+        });
         console.log(formErrors);
     }
     
@@ -84,17 +92,53 @@ function RegisterForm(props) {
     
     
     function setErrorFor(input, message){
-    
-        setFormErrors({[input]:message})
+        setFormErrors({
+            ...formErrors,
+            [input]: message
+        });
     }
 
+
+    const validateFirstName = () => {
+        clearError('firstName');
+        const firstNameValue = credentials.firstName.trim();
+    
+        setResults({
+            ...results,
+            firstName: isValidName(firstNameValue, 'firstName')
+        });
+        unlockOrLockSubmit();
+    }
+    
+    
+    function isValidName(name_value, nameInput){
+        const nameRegex = /^[a-z]+$/i;
+        const message = "Invalid name entered. Please only use alphabets";
+        return validationForUsernameOrName(name_value, nameInput, nameRegex, message);
+    
+    }
+    
+    const validateLastName = () => {
+        clearError('lastName');
+    
+        const lastNameValue = credentials.lastName.trim();
+    
+        setResults({
+            ...results,
+            lastName: isValidName(lastNameValue, 'lastName')
+        });
+        unlockOrLockSubmit();
+    }
 
     
     const validateEmail = () => {
         clearError('email');
     
         const emailValue = credentials.email.trim();
-        //results['email']= isValidEmail(emailValue);
+        setResults({
+            ...results,
+            email: isValidEmail(emailValue),
+        });
         unlockOrLockSubmit();
     }
     
@@ -113,10 +157,13 @@ function RegisterForm(props) {
     const validatePasswords = () => {
         clearError('passwords');
     
-        const passwordValue = credentials.password.value.trim();
-        const passwordConfirmationValue = credentials.passwordConfirmation.value.trim();
-       
-        results['passwords'] = areValidPasswords(passwordValue, passwordConfirmationValue);
+        const passwordValue = credentials.password.trim();
+        const passwordConfirmationValue = credentials.passwordConfirmation.trim();
+
+        setResults({
+            ...results,
+            passwords: areValidPasswords(passwordValue, passwordConfirmationValue)
+        });
         unlockOrLockSubmit();
     }
     
@@ -138,9 +185,10 @@ function RegisterForm(props) {
             }
     
             return true;
-    
     }
-    
+
+
+
 
     function unlockOrLockSubmit(){
          setDisabled(!Object.values(results).every((result) => result));
@@ -153,7 +201,7 @@ function RegisterForm(props) {
             <div className="input-group-append">
                 <span className="input-group-text"><i className="fas fa-user"></i></span>
             </div>
-            <input type="text" name="username" placeholder="Username..." className="form-control" value={credentials.username} onChange={inputChanged} />
+            <input type="text" name="username" placeholder="Username..." className="form-control" value={credentials.username} onChange={inputChanged} onBlur={validateUsername}/>
             <small className='usernameSmall'> {formErrors.username} </small>
         </div>
         
@@ -161,7 +209,8 @@ function RegisterForm(props) {
             <div className="input-group-append">
                 <span className="input-group-text"><i className="fas fa-id-badge"></i></span>
             </div>
-            <input type="text" name="firstName" placeholder="First Name..." className="form-control" value={credentials.firstName} onChange={inputChanged}/>
+            <input type="text" name="firstName" placeholder="First Name..." className="form-control" value={credentials.firstName} onChange={inputChanged}  onBlur={validateFirstName}/>
+            <small className='firstNameSmall'> {formErrors.firstName} </small>
         </div>
               
               
@@ -169,7 +218,9 @@ function RegisterForm(props) {
             <div className="input-group-append">
                 <span className="input-group-text"><i className="fas fa-id-badge"></i></span>
             </div>
-            <input type="text" name="lastName" placeholder="Last Name..." className="form-control" value={credentials.lastName} onChange={inputChanged}/>
+            <input type="text" name="lastName" placeholder="Last Name..." className="form-control" value={credentials.lastName} onChange={inputChanged}  onBlur={validateLastName}/>
+            <small className='lastNameSmall'> {formErrors.lastName} </small>
+
         </div>
 
 
@@ -177,7 +228,7 @@ function RegisterForm(props) {
             <div className="input-group-append">
                 <span className="input-group-text"><i className="fas fa-envelope-square"></i></span>
             </div>
-            <input type="text" name="email" placeholder="Email..." className="form-control" value={credentials.email} onChange={inputChanged} />
+            <input type="text" name="email" placeholder="Email..." className="form-control" value={credentials.email} onChange={inputChanged}  onBlur={validateEmail}/>
             <small className='emailSmall'> {formErrors.email} </small>
         </div>
         
@@ -186,7 +237,7 @@ function RegisterForm(props) {
             <div className="input-group-append">
                 <span className="input-group-text"><i className="fas fa-calendar-alt"></i></span>
             </div>
-            <input type="date" name="date_of_birth" placeholder="Date of Birth..." className="form-control" value={credentials.date_of_birth} onChange={inputChanged}/>
+            <input type="date" name="date_of_birth" placeholder="Date of Birth..." className="form-control" value={credentials.date_of_birth} onChange={inputChanged}  />
         </div>
         
         
@@ -194,7 +245,7 @@ function RegisterForm(props) {
             <div className="input-group-append">
                 <span className="input-group-text"><i className="fas fa-key"></i></span>
             </div>
-            <input type="password" name="password" placeholder="Password..." className="form-control" value={credentials.password} onChange={inputChanged} />
+            <input type="password" name="password" placeholder="Password..." className="form-control" value={credentials.password} onChange={inputChanged}  onBlur={validatePasswords}/>
         </div>
 
 
@@ -202,7 +253,7 @@ function RegisterForm(props) {
             <div className="input-group-append">
                 <span className="input-group-text"><i className="fas fa-key"></i></span>
             </div>
-            <input type="password" name="confirmPassword" placeholder="Confirm Password..." className="form-control" value={credentials.confirmPassword} onChange={inputChanged} />
+            <input type="password" name="passwordConfirmation" placeholder="Confirm Password..." className="form-control" value={credentials.confirmPassword} onChange={inputChanged}  onBlur={validatePasswords}/>
             <small className='passwordSmall'> {formErrors.passwords} </small>
 
         </div>
