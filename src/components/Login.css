@@ -13,7 +13,7 @@
     border-radius: 5px;
 }
 
-#error{
+.error{
     text-align: center;
     color: rgb(211, 12, 12);
     text-align: center;
@@ -31,19 +31,19 @@
     color: #fff;
 }
 
-#login-btn {
+input.login-btn {
     width: 100%;
     background: #33ccff;
     color: white;
     margin-top: 20px;
 }
 
-#login-btn:focus {
+input.login-btn:focus {
     box-shadow: none;
     outline: 0px;
 }
 
-#login-container {
+div.login-container {
     padding: 0 2rem;
 }
 
@@ -64,7 +64,7 @@ small{
     color: red;
 }
 
-#successMessage{
+.successMessage{
     color:green;
     text-align: center;
     margin-top: 10px;

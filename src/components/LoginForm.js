@@ -30,7 +30,6 @@ export default class LoginForm extends Component {
   render() {
     return (
       <form action="">
-        <CSRFToken />
         
         <div className="input-group mb-3">
           <div className="input-group-append">
@@ -48,10 +47,10 @@ export default class LoginForm extends Component {
           <input type="password" name="password" placeholder="Password..." className="form-control" value={this.state.credentials.password} onChange={this.inputChanged}/>
         </div>
 
-        <p id="error"> {this.props.error} </p>
+        <p className="error"> {this.props.error} </p>
 
-        <div id="login-container" className="d-flex justify-content-center mt-3 login-container">
-          <input id="login-btn" className="btn login-btn" type="submit" value="Login" onClick={this.login}/>
+        <div  className="d-flex justify-content-center mt-3 login-container">
+          <input  className="btn login-btn" type="submit" value="Login" onClick={this.login}/>
         </div>
       </form>
     )

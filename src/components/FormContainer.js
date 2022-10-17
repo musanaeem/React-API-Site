@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-function FormContainer({title, form, accountMessage, alternateTitle}) {
+function FormContainer({link, title, form, accountMessage, alternateTitle}) {
   return (
 
     <div className="container h-100">
@@ -16,7 +17,7 @@ function FormContainer({title, form, accountMessage, alternateTitle}) {
 
                 <div className="mt-4">
                     <div className="d-flex justify-content-center links">
-                        {accountMessage} <a href="{% url 'register' %}" className="ml-2">{alternateTitle}</a>
+                        {accountMessage} <Link to={link} className="ml-2">{alternateTitle}</Link>
                     </div>
                 </div>
             </div>

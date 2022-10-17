@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import LoginForm from '../components/LoginForm';
 import '../components/Login.css';
 import '../components/baseStyle.css';
+import { Link } from 'react-router-dom';
 
 
 export default class LoginPage extends Component {
@@ -21,13 +22,13 @@ export default class LoginPage extends Component {
                         <LoginForm onLogin = {this.props.onLogin} error={this.props.error}/>
                     </div>
 
-                    <div id="successMessage">
+                    <div className="successMessage">
                         <p>{this.props.successMessage}</p>
                     </div>
 
                     <div className="mt-4">
                         <div className="d-flex justify-content-center links">
-                            Don't have an account? <a href="{% url 'register' %}" className="ml-2">Sign Up</a>
+                            Don't have an account? <Link to='/register' className="ml-2">Sign Up </Link>
                         </div>
                     </div>
                 </div>

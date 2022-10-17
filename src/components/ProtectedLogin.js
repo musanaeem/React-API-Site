@@ -4,7 +4,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 export default class ProtectedLogin extends Component {
   render() {
-    return Cookies.get('jwt') ? <Navigate to='/home'/> : <Outlet/>;
+    return (window.localStorage.getItem('blogSiteUserLoggedIn') == 'true') ? <Navigate to='/home'/> : <Outlet/>;
   }
 
 }
