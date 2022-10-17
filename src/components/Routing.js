@@ -30,7 +30,8 @@ class Routing extends Component {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': null
+        'Authorization': null,
+        'X-CSRFToken': Cookies.get('csrftoken')
       },
       body: JSON.stringify(credentials),
     };
@@ -46,8 +47,8 @@ class Routing extends Component {
     .then(response => response.json())
     .then(data => {
       if(!data.detail){
-        this.props.navigator('/home');
         window.localStorage.setItem('blogSiteUserLoggedIn',true);
+        this.props.navigator('/home');
       }
       else{
         this.setState({
