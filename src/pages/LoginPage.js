@@ -22,6 +22,7 @@ class LoginPage extends Component {
         LoginRequest(credentials).then( data => {
             if(!data.detail){
                 window.localStorage.setItem('blogSiteUserLoggedIn',true);
+                this.props.changeLoginState(true);
                 this.props.navigator('/home');
               }
             else{
@@ -66,7 +67,7 @@ class LoginPage extends Component {
 
 export function LoginWrapper(props){
     const navigator = useNavigate();
-    return (<LoginPage navigator={navigator}></LoginPage>)
+    return (<LoginPage navigator={navigator}  changeLoginState={props.changeLoginState}></LoginPage>)
   }
 
 export default LoginPage;
