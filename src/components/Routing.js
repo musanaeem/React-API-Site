@@ -49,7 +49,7 @@ class Routing extends Component {
     .then(response => response.json())
     .then(data => {
       if(!data.detail){
-        Cookies.set('jwt', JSON.stringify(data));
+        window.localStorage.setItem('blogSiteUserLoggedIn',true);
         this.props.navigator('/home');
       }
       else{
