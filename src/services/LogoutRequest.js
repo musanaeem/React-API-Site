@@ -1,7 +1,6 @@
 import Cookies from 'js-cookie';
 
-
-const getOptions = credentials => {
+const getOptions = () => {
 
     const options = {
       method: 'POST',
@@ -11,20 +10,19 @@ const getOptions = credentials => {
         'Authorization': null,
         'X-CSRFToken': Cookies.get('csrftoken')
       },
-      body: JSON.stringify(credentials),
+      body: "",
     };
 
     return options
   }
 
-function LoginRequest(credentials) {
-
+function LogoutRequest() {
 
     let options = getOptions(credentials)
 
         const env = process.env;
 
-        const url = `${env.REACT_APP_HOST}:${env.REACT_APP_PORT}${env.REACT_APP_LOGIN_PATH}`
+        const url = `${env.REACT_APP_HOST}:${env.REACT_APP_PORT}${env.REACT_APP_LOGOUT_PATH}`
 
         return fetch(url, options)
         .then(response => response.json())
@@ -33,4 +31,4 @@ function LoginRequest(credentials) {
         });
       }
 
-export default LoginRequest
+export default LogoutRequest

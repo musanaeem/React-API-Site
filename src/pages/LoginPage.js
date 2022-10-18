@@ -1,17 +1,28 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import LoginForm from '../components/LoginForm';
 import '../components/Login.css';
 import '../components/baseStyle.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import LoginRequest from '../services/LoginRequest';
+import FormContainer from '../components/FormContainer';
 
 
 function LoginPage(props) {
 
+    const location = useLocation();
     const [error, setError] = useState('');
+
+    const navigate = useNavigate();
+
+    let isSuccessMessage = true;
+
+    if(!location.state){
+        isSuccessMessage = false;
+    }
 
     const loginTag = () => {
         return(
-            <LoginForm onLogin = {logUserIn} error={error} />
+            <LoginForm onLogin = {logUserIn} error={error}  successMessage = {isSuccessMessage}/>
         )
     }
 
@@ -21,7 +32,7 @@ function LoginPage(props) {
             if(!data.detail){
                 window.localStorage.setItem('blogSiteUserLoggedIn',true);
                 props.changeLoginState(true);
-                useNavigate('/home');
+                navigate('/home');
               }
             else{
                 setError(data.detail);

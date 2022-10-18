@@ -1,4 +1,3 @@
-import Cookies from 'js-cookie';
 import React, { Component } from 'react'
 import { Navigate, Outlet } from 'react-router-dom';
 
