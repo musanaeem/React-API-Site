@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 import {
-    useNavigate,
     Route,
     Routes,
   } from 'react-router-dom';
 import LoginPage from '../pages/LoginPage';
 import {HomePageWrapper} from '../pages/HomePage';
-import ProtectedLogin from './ProtectedLogin';
+import ProtectedAuthentication from './ProtectedAuthentication';
 import ProtectedRoutes from './ProtectedRoutes';
 import RegisterPage from '../pages/RegisterPage';
-import Cookies from 'js-cookie';
 
 
 class Routing extends Component {
@@ -18,99 +16,95 @@ class Routing extends Component {
     super(props);
 
     this.state = {
+      isLoggedIn: false,
       error: '',
       successMessage: ''
     };
 
+    this.updateLoginState = this.updateLoginState.bind();
   }
 
-  getOptions = credentials => {
 
-    const options = {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': null,
-        'X-CSRFToken': Cookies.get('csrftoken')
-      },
-      body: JSON.stringify(credentials),
-    };
 
-    return options
-  }
+  // getOptions = credentials => {
 
-  logUserIn = (credentials) => {
+  //   const options = {
+  //     method: 'POST',
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json',
+  //       'Authorization': null,
+  //       'X-CSRFToken': Cookies.get('csrftoken')
+  //     },
+  //     body: JSON.stringify(credentials),
+  //   };
 
-    let options = this.getOptions(credentials)
+  //   return options
+  // }
 
-    fetch('http://localhost:8000/api/login/', options)
-    .then(response => response.json())
-    .then(data => {
-      if(!data.detail){
-        window.localStorage.setItem('blogSiteUserLoggedIn',true);
-        this.props.navigator('/home');
-      }
-      else{
-        this.setState({
-          error: data.detail
-        })
-      }
-    });
-  }
 
-  registerUser = (credentials) => {
+  // registerUser = (credentials) => {
 
-    let options = this.getOptions(credentials);
-    const errorMessage = 'This field is required.'
+  //   let options = this.getOptions(credentials);
+  //   const errorMessage = 'This field is required.'
 
-    fetch('http://localhost:8000/api/register/', options)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-      //might change with object.values().every()
-      if(data.username != errorMessage && data.password != errorMessage && data.email != errorMessage && data.date_of_birth != errorMessage){
-        this.setState({
-          successMessage: "Registration Successful"
-        })
-        this.props.navigator('/login');
-      }
-      else{
-        this.setState({
-          error: "Registration failed"
-        })
-      }
+  //   fetch('http://localhost:8000/api/register/', options)
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     console.log(data)
+  //     //might change with object.values().every()
+  //     if(data.username != errorMessage && data.password != errorMessage && data.email != errorMessage && data.date_of_birth != errorMessage){
+  //       this.setState({
+  //         successMessage: "Registration Successful"
+  //       })
+  //       this.props.navigator('/login');
+  //     }
+  //     else{
+  //       this.setState({
+  //         error: "Registration failed"
+  //       })
+  //     }
 
-    });
+  //   });
+  // }
+
+
+  updateLoginState = value => {
+    this.setState({
+      isLoggedIn: value
+    })
   }
 
   componentDidMount() {
     if (!window.localStorage.getItem('blogSiteUserLoggedIn'))
     {
       window.localStorage.setItem('blogSiteUserLoggedIn', false);
+      this.setState({
+        isLoggedIn: false
+      })
+    }
+    else{
+      this.setState({
+        isLoggedIn: JSON.parse(window.localStorage.getItem('blogSiteUserLoggedIn'))
+      })
     }
   }
 
   render() {
     return (
       <Routes>
-          <Route element={<ProtectedLogin /> }>
-            <Route path='/login' element={<LoginPage  onLogin = {this.logUserIn} error = {this.state.error} successMessage = {this.state.successMessage}/> }/>
+          <Route element={<ProtectedAuthentication isLoggedIn = {this.state.isLoggedIn}/>}>
+            <Route path='/login' element={<LoginPage changeLoginState = {this.updateLoginState}/> }/>
             <Route path='/register' element={<RegisterPage onRegister = {this.registerUser} error = {this.state.error} />} />
 
           </Route>
 
-          <Route element={<ProtectedRoutes /> }>
-            <Route path='/home' element={<HomePageWrapper /> }/>
+          <Route element={<ProtectedRoutes isLoggedIn = {this.state.isLoggedIn}/> }>
+            <Route path='/home' element={<HomePageWrapper changeLoginState = {this.updateLoginState}/> }/>
           </Route>
       </Routes>
     )
   }
-}
-
-export function RoutingWrapper(props){
-  const navigator = useNavigate();
-  return (<Routing navigator={navigator}></Routing>)
 }
 
 export default Routing;

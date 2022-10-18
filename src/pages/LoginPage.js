@@ -1,41 +1,40 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import LoginForm from '../components/LoginForm';
 import '../components/Login.css';
 import '../components/baseStyle.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
-export default class LoginPage extends Component {
+function LoginPage(props) {
 
-  render() {
-    return ( 
+    const [error, setError] = useState('');
 
-        <div className="container h-100">
+    const loginTag = () => {
+        return(
+            <LoginForm onLogin = {logUserIn} error={error} />
+        )
+    }
 
-            <div className="d-flex justify-content-center h-100">
-                <div className="user-card">
-                    <div className="d-flex justify-content-center">
-                        <h3 className="form-title">LOGIN</h3>
-                    </div>
+    const logUserIn = (credentials) => {
 
-                    <div className="d-flex justify-content-center form-container">
-                        <LoginForm onLogin = {this.props.onLogin} error={this.props.error}/>
-                    </div>
+        LoginRequest(credentials).then( data => {
+            if(!data.detail){
+                window.localStorage.setItem('blogSiteUserLoggedIn',true);
+                props.changeLoginState(true);
+                useNavigate('/home');
+              }
+            else{
+                setError(data.detail);
+              }
+        });
+    }
 
-                    <div className="successMessage">
-                        <p>{this.props.successMessage}</p>
-                    </div>
 
-                    <div className="mt-4">
-                        <div className="d-flex justify-content-center links">
-                            Don't have an account? <Link to='/register' className="ml-2">Sign Up </Link>
-                        </div>
-                    </div>
-                </div>
-
-                
-            </div>
-        </div>
-    )
-  }
+  return (
+    <div>
+        <FormContainer form={loginTag} title='Login' alternateTitle='Register'  accountMessage='Dont have an have an account?' link='/register'/>
+    </div>
+  )
 }
+
+export default LoginPage
