@@ -24,9 +24,9 @@ async function LoginRequest(credentials) {
 
         const env = process.env;
 
-        //const url = `${env.REACT_APP_HOST}:${env.REACT_APP_PORT}${env.REACT_APP_LOGIN_PATH}`
+        const url = `${env.REACT_APP_HOST}:${env.REACT_APP_PORT}${env.REACT_APP_LOGIN_PATH}`
 
-        return fetch('http://localhost:8000/api/login/', options)
+        return fetch(url, options)
         .then(response => response.json())
         .then(data => {
           return data;
