@@ -1,0 +1,65 @@
+.user-card {
+    margin-top: 150px;
+    width: 350px;
+    background: #74cfbf;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+}
+
+.error{
+    text-align: center;
+    color: rgb(211, 12, 12);
+}
+
+.form-container {
+    margin-top: 20px;
+}
+
+.form-title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+input.login-btn {
+    width: 100%;
+    background: #33ccff;
+    color: white;
+    margin-top: 20px;
+}
+
+input.login-btn:focus {
+    box-shadow: none;
+    outline: 0px;
+}
+
+div.login-container {
+    padding: 0 2rem;
+}
+
+span.input-group-text{
+    background: #f7ba5b;
+    color: white;
+    border: 0;
+    border-radius: 0.25rem 0 0 0.25rem;
+    height: 37px;
+}
+
+.input-user,
+.input-pass:focus {
+    box-shadow: none;
+    outline: 0px;
+}
+
+small{
+    color: red
+}
+
+
