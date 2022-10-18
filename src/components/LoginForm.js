@@ -48,8 +48,10 @@ export default class LoginForm extends Component {
 
         <p className="error"> {this.props.error} </p>
 
-        <div className="d-flex justify-content-center mt-3 login-container">
-          <input className="btn login-btn" type="submit" value="Login" onClick={this.login}/>
+        {this.props.successMessage && <p className='successMessage'> Registration Successful </p>}
+
+        <div  className="d-flex justify-content-center mt-3 login-container">
+          <input  className="btn login-btn" type="submit" value="Login" onClick={this.login}/>
         </div>
       </form>
     )
