@@ -13,8 +13,6 @@ class LoginPage extends Component {
         this.state = {
             error: ''
         }
-
-        this.logUserIn = this.logUserIn.bind();
     }
 
     logUserIn = (credentials) => {

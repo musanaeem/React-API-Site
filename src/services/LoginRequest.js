@@ -1,25 +1,25 @@
 import Cookies from 'js-cookie';
 
-async function LoginRequest(credentials) {
 
-    const getOptions = credentials => {
+const getOptions = credentials => {
 
-        const options = {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': null,
-            'X-CSRFToken': Cookies.get('csrftoken')
-          },
-          body: JSON.stringify(credentials),
-        };
-    
-        return options
-      }
-      
-    
-    
+    const options = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': null,
+        'X-CSRFToken': Cookies.get('csrftoken')
+      },
+      body: JSON.stringify(credentials),
+    };
+
+    return options
+  }
+
+
+function LoginRequest(credentials) {
+
     let options = getOptions(credentials)
 
         const env = process.env;
