@@ -3,7 +3,7 @@ import LoginForm from '../components/LoginForm';
 import '../components/Login.css';
 import '../components/baseStyle.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import LoginRequest from '../services/LoginRequest';
+import loginRequest from '../services/LoginRequest';
 import FormContainer from '../components/FormContainer';
 
 
@@ -28,7 +28,7 @@ function LoginPage(props) {
 
     const logUserIn = (credentials) => {
 
-        LoginRequest(credentials).then( data => {
+        loginRequest(credentials).then( data => {
             if(!data.detail){
                 window.localStorage.setItem('blogSiteUserLoggedIn',true);
                 props.changeLoginState(true);

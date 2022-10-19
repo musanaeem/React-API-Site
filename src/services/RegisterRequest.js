@@ -18,7 +18,7 @@ const getOptions = credentials => {
   }
 
 
-function RegisterRequest(credentials) {
+function registerRequest(credentials) {
    
 
     let options = getOptions(credentials)
@@ -34,4 +34,4 @@ function RegisterRequest(credentials) {
         });
       }
 
-export default RegisterRequest
+export default registerRequest

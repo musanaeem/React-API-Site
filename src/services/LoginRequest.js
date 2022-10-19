@@ -17,7 +17,7 @@ const getOptions = credentials => {
     return options
   }
 
-function LoginRequest(credentials) {
+function loginRequest(credentials) {
 
 
     let options = getOptions(credentials)
@@ -33,4 +33,4 @@ function LoginRequest(credentials) {
         });
       }
 
-export default LoginRequest
+export default loginRequest

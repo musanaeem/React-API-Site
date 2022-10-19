@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import FormContainer from '../components/FormContainer';
 import RegisterForm from '../components/RegisterForm';
-import RegisterRequest from '../services/RegisterRequest';
+import registerRequest from '../services/RegisterRequest';
 
 
-const RegisterPage = (props) => {
+function RegisterPage (props) {
 
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -20,17 +20,24 @@ const RegisterPage = (props) => {
     
         const errorMessage = 'This field is required.'
 
-        RegisterRequest(credentials).then( data => {
-            //might change with object.values().every()
-            if(data.username != errorMessage && data.password != errorMessage && data.email != errorMessage && data.date_of_birth != errorMessage && !Array.isArray(data.username)){
-                navigate('/login', {state:true});
-            }
-            else{
+        registerRequest(credentials).then( data => {
+            
+            let detail = Object.values(data).find( dataValue => {
+                return dataValue == errorMessage;
+              });
+
+            if(detail){
                 setError('Registration failed');
             }
+            else if(Array.isArray(data.username)){
+                setError('User Already Exists');
+            }
+            else{
+                navigate('/login', {state:true});
+            }
         });
-    
     }
+    
 
 
     return (
