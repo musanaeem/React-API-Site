@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { useNavigate } from 'react-router-dom';
+import logoutRequest from '../services/LogoutRequest';
 
 class HomePage extends Component {
 
@@ -9,6 +10,7 @@ class HomePage extends Component {
   
   logoutUser = () => {
     window.localStorage.setItem('blogSiteUserLoggedIn', false);
+    logoutRequest();
     this.props.changeLoginState(false);
     this.props.navigator('/login');
   }
