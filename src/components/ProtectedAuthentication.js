@@ -5,5 +5,8 @@ export default class ProtectedAuthentication extends Component {
   render() {
     return (this.props.isLoggedIn == true) ? <Navigate to='/home'/> : <Outlet/>;
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 }

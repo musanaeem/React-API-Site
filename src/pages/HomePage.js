@@ -10,7 +10,10 @@ class HomePage extends Component {
   
   logoutUser = () => {
     window.localStorage.setItem('blogSiteUserLoggedIn', false);
+<<<<<<< HEAD
     logoutRequest();
+=======
+>>>>>>> main
     this.props.changeLoginState(false);
     this.props.navigator('/login');
   }
@@ -27,7 +30,11 @@ class HomePage extends Component {
 
 export function HomePageWrapper(props){
   const navigator = useNavigate();
+<<<<<<< HEAD
   return (<HomePage navigator={navigator} changeLoginState={props.changeLoginState}></HomePage>)
+=======
+  return (<HomePage navigator={navigator}  changeLoginState={props.changeLoginState}></HomePage>)
+>>>>>>> main
 }
 
 export default HomePage;

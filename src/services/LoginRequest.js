@@ -17,8 +17,13 @@ const getOptions = credentials => {
     return options
   }
 
+<<<<<<< HEAD
 function loginRequest(credentials) {
 
+=======
+
+function loginRequest(credentials) {
+>>>>>>> main
 
     let options = getOptions(credentials)
 
@@ -33,4 +38,8 @@ function loginRequest(credentials) {
         });
       }
 
+<<<<<<< HEAD
 export default loginRequest
+=======
+export default loginRequest
+>>>>>>> main

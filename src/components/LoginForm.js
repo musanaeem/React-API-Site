@@ -29,7 +29,11 @@ export default class LoginForm extends Component {
   render() {
     return (
       <form action="">
+<<<<<<< HEAD
         
+=======
+                
+>>>>>>> main
         <div className="input-group mb-3">
           <div className="input-group-append">
             <span className="input-group-text"> <i className="fas fa-user"></i> </span>
@@ -47,11 +51,17 @@ export default class LoginForm extends Component {
         </div>
 
         <p className="error"> {this.props.error} </p>
+<<<<<<< HEAD
 
         {this.props.successMessage && <p className='successMessage'> Registration Successful </p>}
 
         <div  className="d-flex justify-content-center mt-3 login-container">
           <input  className="btn login-btn" type="submit" value="Login" onClick={this.login}/>
+=======
+
+        <div className="d-flex justify-content-center mt-3 login-container">
+          <input className="btn login-btn" type="submit" value="Login" onClick={this.login}/>
+>>>>>>> main
         </div>
       </form>
     )

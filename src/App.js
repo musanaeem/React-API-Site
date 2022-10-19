@@ -5,7 +5,11 @@ import {
 import Routing from './components/Routing';
 
 export default class App extends Component {
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> main
   render() {
     return (
       <div className='Container'>

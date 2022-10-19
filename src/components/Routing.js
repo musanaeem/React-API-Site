@@ -3,7 +3,7 @@ import {
     Route,
     Routes,
   } from 'react-router-dom';
-import LoginPage from '../pages/LoginPage';
+import {LoginWrapper} from '../pages/LoginPage';
 import {HomePageWrapper} from '../pages/HomePage';
 import ProtectedAuthentication from './ProtectedAuthentication';
 import ProtectedRoutes from './ProtectedRoutes';
@@ -16,15 +16,35 @@ class Routing extends Component {
     super(props);
 
     this.state = {
+<<<<<<< HEAD
       isLoggedIn: false,
       error: '',
       successMessage: ''
     };
+=======
+      isLoggedIn: false
+    }
+>>>>>>> main
 
     this.updateLoginState = this.updateLoginState.bind();
   }
 
+  componentDidMount() {
+    if (!window.localStorage.getItem('blogSiteUserLoggedIn'))
+    {
+      window.localStorage.setItem('blogSiteUserLoggedIn', false);
+      this.setState({
+        isLoggedIn: false
+      })
+    }
+    else{
+      this.setState({
+        isLoggedIn: JSON.parse(window.localStorage.getItem('blogSiteUserLoggedIn'))
+      })
+    }
+  }
 
+<<<<<<< HEAD
 
   // getOptions = credentials => {
 
@@ -88,15 +108,27 @@ class Routing extends Component {
         isLoggedIn: JSON.parse(window.localStorage.getItem('blogSiteUserLoggedIn'))
       })
     }
+=======
+   updateLoginState = value => {
+    this.setState({
+      isLoggedIn: value
+    })
+>>>>>>> main
   }
+  
 
   render() {
     return (
       <Routes>
+<<<<<<< HEAD
           <Route element={<ProtectedAuthentication isLoggedIn = {this.state.isLoggedIn}/>}>
             <Route path='/login' element={<LoginPage changeLoginState = {this.updateLoginState}/> }/>
             <Route path='/register' element={<RegisterPage onRegister = {this.registerUser} error = {this.state.error} />} />
 
+=======
+          <Route element={<ProtectedAuthentication isLoggedIn = {this.state.isLoggedIn}/> }>
+            <Route path='/login' element={<LoginWrapper  changeLoginState = {this.updateLoginState}/> }/>
+>>>>>>> main
           </Route>
 
           <Route element={<ProtectedRoutes isLoggedIn = {this.state.isLoggedIn}/> }>
