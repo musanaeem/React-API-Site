@@ -10,6 +10,7 @@ const getOptions = () => {
         'Authorization': null,
         'X-CSRFToken': Cookies.get('csrftoken')
       },
+      credentials: 'include',
       body: "",
     };
 
@@ -18,7 +19,7 @@ const getOptions = () => {
 
 function LogoutRequest() {
 
-    let options = getOptions(credentials)
+    let options = getOptions()
 
         const env = process.env;
 

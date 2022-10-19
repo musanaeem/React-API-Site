@@ -11,6 +11,7 @@ const getOptions = credentials => {
         'Authorization': null,
         'X-CSRFToken': Cookies.get('csrftoken')
       },
+      credentials: 'include',
       body: JSON.stringify(credentials),
     };
 
