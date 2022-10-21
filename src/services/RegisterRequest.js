@@ -1,7 +1,7 @@
 import '../utils/options';
 
 
-function registerRequest(credentials) {
+const registerRequest = (credentials) => {
 
 
     let options = getOptions(credentials)

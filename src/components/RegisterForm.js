@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function RegisterForm(props) {
+const RegisterForm = (props) => {
 
     const [credentials, setCredentials] = useState({
         email: '',

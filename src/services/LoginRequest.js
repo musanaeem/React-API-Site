@@ -1,7 +1,7 @@
 import '../utils/options';
 
 
-function loginRequest(credentials) {
+const loginRequest = (credentials) => {
 
     let options = getOptions(credentials)
 

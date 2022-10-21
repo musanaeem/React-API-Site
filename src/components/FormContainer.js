@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function FormContainer({link, title, children, accountMessage, alternateTitle}) {
+const FormContainer = ({link, title, children, accountMessage, alternateTitle}) => {
   return (
 
     <div className="container h-100">

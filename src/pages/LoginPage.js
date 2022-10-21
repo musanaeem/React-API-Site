@@ -7,7 +7,7 @@ import loginRequest from '../services/LoginRequest';
 import FormContainer from '../components/FormContainer';
 
 
-function LoginPage(props) {
+const LoginPage = (props) => {
 
     const location = useLocation();
     const [error, setError] = useState('');

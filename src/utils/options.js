@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 
-function options() {
+const options = () => {
 
     const getOptions = credentials => {
 

@@ -1,7 +1,7 @@
 import '../utils/options';
 
 
-function LogoutRequest() {
+const LogoutRequest = () => {
 
     let options = getOptions()
 
