@@ -4,10 +4,14 @@ import {
     Routes,
   } from 'react-router-dom';
 import LoginPage from '../pages/LoginPage';
-import {HomePageWrapper} from '../pages/HomePage';
+import HomePage from '../pages/HomePage';
 import ProtectedAuthentication from './ProtectedAuthentication';
 import ProtectedRoutes from './ProtectedRoutes';
 import RegisterPage from '../pages/RegisterPage';
+import Navbar from './Navbar';
+import BioPage from '../pages/BioPage';
+import BlogListPage from '../pages/BlogListPage';
+import BlogPage from '../pages/BlogPage';
 
 
 class Routing extends Component {
@@ -45,17 +49,24 @@ class Routing extends Component {
 
   render() {
     return (
+      <>
+      {this.state.isLoggedIn && <Navbar  changeLoginState = {this.updateLoginState}/>}
       <Routes>
           <Route element={<ProtectedAuthentication isLoggedIn = {this.state.isLoggedIn}/> }>
             <Route path='/login' element={<LoginPage  changeLoginState = {this.updateLoginState}/> }/>
             <Route path='/register' element={<RegisterPage />} />
 
           </Route>
-            
+
           <Route element={<ProtectedRoutes isLoggedIn = {this.state.isLoggedIn}/> }>
-            <Route path='/home' element={<HomePageWrapper changeLoginState = {this.updateLoginState}/> }/>
+            <Route path='/home' element={<HomePage/> }/>
+            <Route path='/bio' element={<BioPage changeLoginState = {this.updateLoginState}/> } />
+            <Route path='/blog' element={<BlogListPage changeLoginState = {this.updateLoginState}/> }/>
+            <Route exact path='/blog/:id' element={<BlogPage changeLoginState = {this.updateLoginState}/> }/>
+
           </Route>
       </Routes>
+      </>
     )
   }
 }
