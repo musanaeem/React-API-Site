@@ -3,8 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import blogRequest from '../services/BlogRequest'
 import '../components/blogStyle.css'
 
-
-function BlogPage(props) {
+const BlogPage = (props) => {
 
     const navigate = useNavigate();
     const [blogData, setBlogData] = useState('');
@@ -12,7 +11,6 @@ function BlogPage(props) {
 
     
     const fetchTasksOrRedirect = () => {
-        
 
         blogRequest(state.id).then(data => { 
             if(data.detail){

@@ -1,30 +1,12 @@
-import Cookies from 'js-cookie';
+import '../utils/options'
 
-
-const getOptions = credentials => {
-
-    const options = {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': null,
-        'X-CSRFToken': Cookies.get('csrftoken')
-      },
-      credentials: 'include',
-      body: JSON.stringify(credentials),
-    };
-
-    return options
-  }
-
-function loginRequest(credentials) {
+const loginRequest = (credentials) => {
 
     let options = getOptions(credentials)
 
         const env = process.env;
 
-        const url = `${env.REACT_APP_HOST}:${env.REACT_APP_PORT}${env.REACT_APP_LOGIN_PATH}`
+        const url = `${env.REACT_APP_HOST}${env.REACT_APP_LOGIN_PATH}`
 
         return fetch(url, options)
         .then(response => response.json())

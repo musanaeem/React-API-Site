@@ -5,7 +5,7 @@ import '../components/blogsStyle.css'
 import moment from 'moment';
 
 
-function BlogListPage(props) {
+const BlogListPage = (props) => {
 
     const navigate = useNavigate();
     const [blogData, setBlogData] = useState('');

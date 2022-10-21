@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import bioRequest from '../services/BioRequest';
 import '../components/bioStyle.css'
 
-function BioPage(props) {
+const BioPage = (props) => {
     const navigate = useNavigate();
     const [bioData, setBioData] = useState('');
     const method = 'GET';
