@@ -20,12 +20,6 @@ const LoginPage = (props) => {
         isSuccessMessage = false;
     }
 
-    const loginTag = () => {
-        return(
-            <LoginForm onLogin = {logUserIn} error={error}  successMessage = {isSuccessMessage}/>
-        )
-    }
-
     const logUserIn = (credentials) => {
 
         loginRequest(credentials).then( data => {
@@ -43,7 +37,9 @@ const LoginPage = (props) => {
 
   return (
     <div>
-        <FormContainer form={loginTag} title='Login' alternateTitle='Register'  accountMessage='Dont have an have an account?' link='/register'/>
+        <FormContainer title='Login' alternateTitle='Register'  accountMessage='Dont have an have an account?' link='/register'>
+            <LoginForm onLogin = {logUserIn} error={error}  successMessage = {isSuccessMessage}/>
+        </FormContainer>
     </div>
   )
 }

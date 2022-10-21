@@ -56,8 +56,8 @@ const RegisterForm = (props) => {
         unlockOrLockSubmit();
         console.log(results);
     }
-    
-    
+
+
     // Clears any errors that are displayed on a field already
     function clearError(input){
         setFormErrors({

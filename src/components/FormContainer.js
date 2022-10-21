@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function FormContainer({link, title, form, accountMessage, alternateTitle}) {
+function FormContainer({link, title, children, accountMessage, alternateTitle}) {
   return (
 
     <div className="container h-100">
@@ -12,7 +12,7 @@ function FormContainer({link, title, form, accountMessage, alternateTitle}) {
                 </div>
 
                 <div className="d-flex justify-content-center form-container">
-                    {form()}
+                    {children}
                 </div>
 
                 <div className="mt-4">
