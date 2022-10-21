@@ -5,14 +5,16 @@ import logoutRequest from '../services/LogoutRequest';
 class HomePage extends Component {
 
   constructor(props){
-  super(props);
+    super(props);
 }
   
   logoutUser = () => {
     window.localStorage.setItem('blogSiteUserLoggedIn', false);
-    logoutRequest().then();
-    this.props.changeLoginState(false);
-    this.props.navigator('/login');
+    logoutRequest(() => {
+      this.props.changeLoginState(false);
+      this.props.navigator('/login');
+    }).then();
+    
   }
   
   render() {

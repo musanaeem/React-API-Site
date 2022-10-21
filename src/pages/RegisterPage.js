@@ -10,11 +10,6 @@ function RegisterPage (props) {
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
-    const registerTag = () => {
-        return(
-            <RegisterForm onRegister = {registerUser} error = {error}/>
-        )
-    }
 
     const registerUser = (credentials) => {
     
@@ -42,7 +37,9 @@ function RegisterPage (props) {
 
     return (
         <div>
-            <FormContainer form={registerTag} title='Register' alternateTitle='Login'  accountMessage='Already have an account?' link='/login'/>
+            <FormContainer title='Register' alternateTitle='Login'  accountMessage='Already have an account?' link='/login'>
+                <RegisterForm onRegister = {registerUser} error = {error}/>
+            </FormContainer>
         </div>
     )
 }
