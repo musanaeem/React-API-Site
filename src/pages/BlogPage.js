@@ -12,7 +12,7 @@ const BlogPage = (props) => {
     
     const fetchTasksOrRedirect = () => {
 
-        blogRequest(state.id).then(data => { 
+        blogRequest('GET', state.id).then(data => { 
             if(data.detail){
                 props.changeLoginState(false);
                 navigate('/login');

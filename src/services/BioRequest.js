@@ -1,6 +1,6 @@
-import '../utils/options'
+import getOptions from "../utils/options";
 
-const bioRequest = (method, body) => {
+const bioRequest = (method, body='') => {
 
     let options = getOptions(method, body)
 
