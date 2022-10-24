@@ -13,6 +13,7 @@ import BioPage from '../pages/BioPage';
 import BlogListPage from '../pages/BlogListPage';
 import BlogPage from '../pages/BlogPage';
 import UpdateOrCreate from '../pages/UpdateOrCreate';
+import DeleteRecord from '../pages/DeleteRecord';
 
 
 class Routing extends Component {
@@ -61,8 +62,11 @@ class Routing extends Component {
 
           <Route element={<ProtectedRoutes isLoggedIn = {this.state.isLoggedIn}/> }>
             <Route path='/home' element={<HomePage/> }/>
+
             <Route path='/bio' element={<BioPage changeLoginState = {this.updateLoginState}/> } />
             <Route exact path='/bio/edit' element={<UpdateOrCreate />} />
+            <Route exact path='/bio/delete' element={<DeleteRecord />} />
+
             <Route path='/blog' element={<BlogListPage changeLoginState = {this.updateLoginState}/> }/>
             <Route exact path='/blog/:id' element={<BlogPage changeLoginState = {this.updateLoginState}/> }/>
 

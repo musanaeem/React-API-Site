@@ -2,17 +2,18 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 import BioForm from '../components/BioForm';
 import BlogForm from '../components/BlogForm';
-import FormContainer from '../components/FormContainer'
+import FormContainer from '../components/FormContainer';
+import '../components/bioCreateStyle.css'
 
 function UpdateOrCreate() {
 
     const { state } = useLocation();
 
   return (
-    <div>
+    <div className='UpdateOrCreate'>
         
       <FormContainer>
-        { state.type == 'Bio' ? <BioForm/> : <BlogForm/> }
+        { state.type === 'Bio' ? <BioForm/> : <BlogForm/> }
       </FormContainer>
     </div>
   )

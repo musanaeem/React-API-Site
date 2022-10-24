@@ -1,4 +1,4 @@
-.user-card {
+.Authentication-body .user-card {
     margin-top: 150px;
     width: 350px;
     background: #74cfbf;
@@ -13,7 +13,7 @@
     border-radius: 5px;
 }
 
-.error{
+.Authentication-body .error{
     text-align: center;
     color: rgb(211, 12, 12);
     text-align: center;
@@ -21,33 +21,33 @@
     margin-bottom: 10px;
 }
 
-.form-container {
+.Authentication-body .form-container {
     margin-top: 20px;
 }
 
-.form-title {
+.Authentication-body .form-title {
     margin-top: 20px;
     margin-bottom: 20px;
     color: #fff;
 }
 
-input.login-btn {
+.Authentication-body input.login-btn {
     width: 100%;
     background: #33ccff;
     color: white;
     margin-top: 20px;
 }
 
-input.login-btn:focus {
+.Authentication-body input.login-btn:focus {
     box-shadow: none;
     outline: 0px;
 }
 
-div.login-container {
+.Authentication-body div.login-container {
     padding: 0 2rem;
 }
 
-span.input-group-text{
+.Authentication-body span.input-group-text{
     background: #f7ba5b;
     color: white;
     border: 0;
@@ -55,17 +55,17 @@ span.input-group-text{
     height: 37px;
 }
 
-.input-user,
-.input-pass:focus {
+.Authentication-body .input-user,
+.Authentication-body .input-pass:focus {
     box-shadow: none;
     outline: 0px;
 }
 
-small{
+.Authentication-body small{
     color: red;
 }
 
-.successMessage{
+.Authentication-body .successMessage{
     color:green;
     text-align: center;
     margin-top: 10px;

@@ -36,7 +36,7 @@ const LoginPage = (props) => {
 
 
   return (
-    <div>
+    <div className='Authentication-body'>
         <FormContainer title='Login' alternateTitle='Register'  accountMessage='Dont have an have an account?' link='/register'>
             <LoginForm onLogin = {logUserIn} error={error}  successMessage = {isSuccessMessage}/>
         </FormContainer>

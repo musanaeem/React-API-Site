@@ -1,28 +1,77 @@
-import React from 'react'
-import InputGroup from './InputGroup'
+import React, { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
+import bioRequest from '../services/BioRequest';
+//import InputGroup from './InputGroup'
 
 const BioForm = () => {
 
+    const navigate = useNavigate();
+
+    const { state } = useLocation();
+    const {data, operation} = state;
+
+    const [credentials, setCredentials] = useState({
+        name: '',
+        address: '',
+        description: ''
+    })
+
+    const [method, setMethod] = useState('POST')
+    
+    useEffect(() => {
+      if(operation === 'Update'){
+        setCredentials({
+            name: data.name,
+            address: data.address,
+            description: data.description
+        })
+        setMethod('PATCH');
+    }
+    }, []);
+
+    const submitForm = event => {
+        event.preventDefault();
+
+        bioRequest(method, credentials).then( () => {
+            navigate('/bio');
+        })
+    }
+
+    const inputChanged = event => {
+        setCredentials({
+            ...credentials,
+            [event.target.name]: event.target.value
+        });
+    }
+
   return (
-    <form action="">
+    <div className="form-container">
+        <h1> Enter details for the record </h1>
+
+        <form action="">
+            <div className="form-inputs">
         
-        <InputGroup margin='input-group mb-3' icon='fas fa-id-badge'>
-            <input type="text" name="name" placeholder="Name..." className="form-control" />
-        </InputGroup>
+                <li>
+                    <label> Name:</label>
+                    <input type="text" name="name" value={credentials.name} onChange={inputChanged}/>
+                </li>
 
-        <InputGroup margin='input-group mb-3' icon='fas fa-id-badge'>
-            <input type="text" name="address" placeholder="Address..." className="form-control" />
-        </InputGroup>
+                <li>
+                    <label> Address:</label>
+                    <input type="text" name="address"  value={credentials.address} onChange={inputChanged}/>
+                </li>
 
-        <InputGroup margin='input-group mb-3' icon='fas fa-id-badge'>
-            <input type="text" name="description" placeholder="Description..." className="form-control" />
-        </InputGroup>
+                <li>
+                    <label> Description:</label>
+                    <textarea name="description" cols="40" rows="10" value={credentials.description} onChange={inputChanged}/>
+                </li>
 
+            </div>
+            
 
-        <div className="d-flex justify-content-center mt-3 login-container">
-          <input className="btn login-btn" type="submit" value="Submit" />
-        </div>
-      </form>
+            <input className="submit" type="submit" name="Submit" onClick={submitForm}/>
+        </form>
+    </div>
   )
 }
 

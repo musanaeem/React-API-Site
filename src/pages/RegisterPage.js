@@ -17,7 +17,7 @@ const RegisterPage = (props) => {
         registerRequest(credentials).then( data => {
             
             let detail = Object.values(data).find( dataValue => {
-                return dataValue == errorMessage;
+                return dataValue === errorMessage;
               });
 
             if(detail){
@@ -35,7 +35,7 @@ const RegisterPage = (props) => {
 
 
     return (
-        <div>
+        <div className='Authentication-body'>
             <FormContainer title='Register' alternateTitle='Login'  accountMessage='Already have an account?' link='/login'>
                 <RegisterForm onRegister = {registerUser} error = {error}/>
             </FormContainer>

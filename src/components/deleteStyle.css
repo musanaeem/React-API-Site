@@ -1,0 +1,25 @@
+.deletePage p,
+.deletePage form,
+.deletePage input {
+    margin: 35px;
+    text-align: center;
+}
+
+.deletePage p{
+    font-size: 20px;
+    margin-top: 140px;
+}
+
+.deletePage form{
+    margin-left: 80px;
+}
+
+.deletePage span  {
+    font-weight: bold;
+}
+
+.deletePage .submit {
+    margin-left: 120px;
+    border-radius: 10px;
+    width: 7%;
+}

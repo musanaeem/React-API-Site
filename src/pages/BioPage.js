@@ -6,21 +6,26 @@ import '../components/bioStyle.css'
 const BioPage = (props) => {
     const navigate = useNavigate();
     const [bioData, setBioData] = useState('');
+    const [isData, setIsData] = useState(false);
     const method = 'GET';
     const body = '';
+    const bioText = `'s Bio`;
     
     const fetchTasksOrRedirect = () => {
-        
 
 
         bioRequest(method, body).then(data => { 
-            if(data.detail){
+            if(data.detail === "Not found."){
+                setIsData(false);
+            }
+            else if(data.detail){
                 props.changeLoginState(false);
                 navigate('/login');
                 return;
             }
             else
             {
+                setIsData(true);
                 setBioData(data);
             }
         });
@@ -32,23 +37,32 @@ const BioPage = (props) => {
     
     return (
         <div className='bioPage'>
-            <h1 className="username"> <span className="user">{bioData.user_username}'s Bio </span></h1>
+            <h1 className="username"> <span className="user"> {isData && bioData.user_username + bioText} </span></h1>
 
-            <Link className="create_text" to='/bio/edit' state={{ type: 'Bio' }} > Create New </Link>
+            {isData ? (
+                <div>
+                    <p className="messages">  </p>
 
-            <p className="messages">  </p>
+                    <div className="record">
+                        <div className="labels">
+                        <h1 className="name"> { bioData.name }</h1>
+                        <h3> Address: { bioData.address }</h3>
+                        <h3> Description: { bioData.description }</h3>
+                        </div> 
 
-            <div className="record">
-                <div className="labels">
-                <h1 className="name"> { bioData.name }</h1>
-                <h3> Address: { bioData.address }</h3>
-                <h3> Description: { bioData.description }</h3>
-                </div> 
-                {/* <div className="methods">
-                <a className="method" href="" > Update </a>
-                <a className="method" href="" > Delete </a>
-                </div> */}
-            </div>
+                        <div className="methods">
+                        <Link className="method" to='/bio/edit' state={{data: bioData, operation: 'Update', type: 'Bio'}}> Update </Link>
+                        <Link className="method" to='/bio/delete'  state={{username: bioData.user_username}}> Delete </Link>
+                        </div>
+
+                    </div> 
+                </div>
+    ): (<div>
+        <Link className="create_text" to='/bio/edit' state={{ type: 'Bio' }} > Create New </Link>
+        <h1 className='notFound'> Data Not Found</h1>
+        </div>
+        )}
+
         </div>
     )
 }
