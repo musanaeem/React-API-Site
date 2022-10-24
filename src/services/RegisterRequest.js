@@ -4,7 +4,7 @@ import '../utils/options';
 const registerRequest = (credentials) => {
 
 
-    let options = getOptions(credentials)
+    let options = getOptions('POST', credentials)
 
         const env = process.env;
 

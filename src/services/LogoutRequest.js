@@ -1,9 +1,9 @@
-import '../utils/options';
+import getOptions from "../utils/options";
 
 
 const LogoutRequest = () => {
 
-    let options = getOptions()
+    let options = getOptions('POST')
 
         const env = process.env;
 

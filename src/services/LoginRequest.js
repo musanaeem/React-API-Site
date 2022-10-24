@@ -1,9 +1,9 @@
-import '../utils/options';
+import getOptions from "../utils/options";
 
 
 const loginRequest = (credentials) => {
 
-    let options = getOptions(credentials)
+    let options = getOptions('POST', credentials)
 
         const env = process.env;
 

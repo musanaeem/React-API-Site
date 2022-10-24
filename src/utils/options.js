@@ -1,23 +1,21 @@
 import Cookies from 'js-cookie';
 
-const options = () => {
+const getOptions = (method, body='') => {
 
-    const getOptions = credentials => {
+    let options = {
+    method: method,
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': null,
+        'X-CSRFToken': Cookies.get('csrftoken')
+    },
+    credentials: 'include',
+    body: JSON.stringify(body),
+    };
 
-        const options = {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': null,
-            'X-CSRFToken': Cookies.get('csrftoken')
-        },
-        credentials: 'include',
-        body: JSON.stringify(credentials),
-        };
-
-        return options
-    }
+    return options
 }
 
-export default options
+
+export default getOptions
