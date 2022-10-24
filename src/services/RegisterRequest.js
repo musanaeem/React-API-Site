@@ -1,4 +1,4 @@
-import '../utils/options';
+import getOptions from "../utils/options";
 
 
 const registerRequest = (credentials) => {
