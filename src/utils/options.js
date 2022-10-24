@@ -1,9 +1,8 @@
 import Cookies from "js-cookie";
 
-const options = () => {
-    const getOptions = (method, body = '') => {
+const getOptions = (method, body = '') => {
 
-        const options = {
+        let options = {
             method: method,
             headers: {
               'Accept': 'application/json',
@@ -17,12 +16,11 @@ const options = () => {
         if (method !== 'GET'){
             options = {
                 ...options,
-                body:body
+                body: JSON.stringify(body)
             }
         }
       
           return options
         }
-}
 
-export default options
+export default getOptions;

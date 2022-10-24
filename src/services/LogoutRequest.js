@@ -1,18 +1,20 @@
-import '../utils/options'
+import getOptions from "../utils/options";
 
 const LogoutRequest = () => {
 
-    let options = getOptions()
+    let options = getOptions('POST')
 
-        const env = process.env;
+    console.log(options)
 
-        const url = `${env.REACT_APP_HOST}${env.REACT_APP_LOGOUT_PATH}`
+    const env = process.env;
 
-        return fetch(url, options)
-        .then(response => response.json())
-        .then(data => {
-          return data;
-        });
-      }
+    const url = `${env.REACT_APP_HOST}${env.REACT_APP_LOGOUT_PATH}`
+
+    return fetch(url, options)
+    .then(response => response.json())
+    .then(data => {
+      return data;
+    });
+  }
 
 export default LogoutRequest

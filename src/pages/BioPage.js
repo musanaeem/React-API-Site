@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import bioRequest from '../services/BioRequest';
 import '../components/bioStyle.css'
 
@@ -34,7 +34,7 @@ const BioPage = (props) => {
         <div className='bioPage'>
             <h1 className="username"> <span className="user">{bioData.user_username}'s Bio </span></h1>
 
-            <a className="create_text" href="{% url 'create-bio' %}" > Create New </a>
+            <Link className="create_text" to='./UpdateOrCreate' > Create New </Link>
 
             <p className="messages">  </p>
 

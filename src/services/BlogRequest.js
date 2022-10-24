@@ -1,8 +1,8 @@
-import '../utils/options'
+import getOptions from "../utils/options";
 
-const blogRequest = (id='') => {
+const blogRequest = (method, id='', body='') => {
 
-    let options = getOptions()
+    let options = getOptions(method, body)
 
         const env = process.env;
 

@@ -15,7 +15,7 @@ const BlogListPage = (props) => {
         
 
 
-        blogRequest().then(data => { 
+        blogRequest('GET').then(data => { 
             if(data.detail){
                 props.changeLoginState(false);
                 navigate('/login');
