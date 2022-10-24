@@ -4,8 +4,6 @@ const LogoutRequest = () => {
 
     let options = getOptions('POST')
 
-    console.log(options)
-
     const env = process.env;
 
     const url = `${env.REACT_APP_HOST}${env.REACT_APP_LOGOUT_PATH}`

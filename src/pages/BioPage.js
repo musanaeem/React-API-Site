@@ -34,7 +34,7 @@ const BioPage = (props) => {
         <div className='bioPage'>
             <h1 className="username"> <span className="user">{bioData.user_username}'s Bio </span></h1>
 
-            <Link className="create_text" to='./UpdateOrCreate' > Create New </Link>
+            <Link className="create_text" to='/bio/edit' state={{ type: 'Bio' }} > Create New </Link>
 
             <p className="messages">  </p>
 
