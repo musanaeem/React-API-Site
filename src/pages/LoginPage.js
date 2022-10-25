@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import LoginForm from '../components/LoginForm';
 import '../components/Login.css';
 import '../components/baseStyle.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import loginRequest from '../services/LoginRequest';
 import FormContainer from '../components/FormContainer';
+import { UserContext } from '../components/UserContext';
 
 
 const LoginPage = (props) => {
 
     const location = useLocation();
     const [error, setError] = useState('');
+    const {setUser} = useContext(UserContext); 
 
     const navigate = useNavigate();
 
@@ -26,6 +28,8 @@ const LoginPage = (props) => {
             if(!data.detail){
                 window.localStorage.setItem('blogSiteUserLoggedIn',true);
                 props.changeLoginState(true);
+                setUser(data.username);
+                window.localStorage.setItem('username',data.username);
                 navigate('/home');
               }
             else{

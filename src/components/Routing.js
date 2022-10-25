@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Route,
     Routes,
@@ -14,67 +14,64 @@ import BlogListPage from '../pages/BlogListPage';
 import BlogPage from '../pages/BlogPage';
 import UpdateOrCreate from '../pages/UpdateOrCreate';
 import DeleteRecord from '../pages/DeleteRecord';
+import { UserContext } from './UserContext';
 
 
-class Routing extends Component {
+const Routing = () => {
 
-  constructor(props){
-    super(props);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(window.localStorage.getItem('username'));
 
-    this.state = {
-      isLoggedIn: false
-    }
+  useEffect(() => {
 
-  }
-
-  componentDidMount() {
     if (!window.localStorage.getItem('blogSiteUserLoggedIn'))
     {
       window.localStorage.setItem('blogSiteUserLoggedIn', false);
-      this.setState({
-        isLoggedIn: false
-      })
+      setIsLoggedIn(false)
     }
     else{
-      this.setState({
-        isLoggedIn: JSON.parse(window.localStorage.getItem('blogSiteUserLoggedIn'))
-      })
-    }
+      setIsLoggedIn(JSON.parse(window.localStorage.getItem('blogSiteUserLoggedIn')))
+    }// eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+
+  const updateLoginState = value => {
+    setIsLoggedIn(value)
   }
 
-   updateLoginState = value => {
-    this.setState({
-      isLoggedIn: value
-    })
-  }
-  
+  return (
+    <div>
+      
+      {isLoggedIn && <Navbar  changeLoginState = {updateLoginState}/>}
+      
+      <UserContext.Provider value={{user, setUser}}>
+        <Routes>
+            <Route element={<ProtectedAuthentication isLoggedIn = {isLoggedIn}/> }>
+              <Route path='/login' element={<LoginPage  changeLoginState = {updateLoginState}/> }/>
+              <Route path='/register' element={<RegisterPage />} />
 
-  render() {
-    return (
-      <>
-      {this.state.isLoggedIn && <Navbar  changeLoginState = {this.updateLoginState}/>}
-      <Routes>
-          <Route element={<ProtectedAuthentication isLoggedIn = {this.state.isLoggedIn}/> }>
-            <Route path='/login' element={<LoginPage  changeLoginState = {this.updateLoginState}/> }/>
-            <Route path='/register' element={<RegisterPage />} />
+            </Route>
 
-          </Route>
+            <Route element={<ProtectedRoutes isLoggedIn = {isLoggedIn}/> }>
+                <Route path='/home' element={<HomePage/> }/>
 
-          <Route element={<ProtectedRoutes isLoggedIn = {this.state.isLoggedIn}/> }>
-            <Route path='/home' element={<HomePage/> }/>
+                <Route path='/bio' element={<BioPage changeLoginState = {updateLoginState}/> } />
+                <Route exact path='/bio/add' element={<UpdateOrCreate  method='POST'  type='Bio'/>  } />
+                <Route exact path='/bio/edit' element={<UpdateOrCreate  method='PATCH'  type='Bio'/>  } />
+                <Route exact path='/bio/delete' element={<DeleteRecord  type='Bio'/>} />
 
-            <Route path='/bio' element={<BioPage changeLoginState = {this.updateLoginState}/> } />
-            <Route exact path='/bio/edit' element={<UpdateOrCreate />} />
-            <Route exact path='/bio/delete' element={<DeleteRecord />} />
+                <Route path='/blog' element={<BlogListPage changeLoginState = {updateLoginState}/> }/>
+                <Route exact path='/blog/add' element={<UpdateOrCreate  method='POST'  type='Blog'/>  } />
 
-            <Route path='/blog' element={<BlogListPage changeLoginState = {this.updateLoginState}/> }/>
-            <Route exact path='/blog/:id' element={<BlogPage changeLoginState = {this.updateLoginState}/> }/>
+                <Route exact path='/blog/:id' element={<BlogPage changeLoginState = {updateLoginState}/> }/>
+                <Route exact path='/blog/edit/:id' element={<UpdateOrCreate method='PUT'  type='Blog'/> }/>
+                <Route exact path='/blog/delete/:id' element={<DeleteRecord  type='Blog'/> }/>
 
-          </Route>
-      </Routes>
-      </>
-    )
-  }
+
+            </Route>
+        </Routes>
+      </UserContext.Provider>
+    </div>
+  )
 }
 
-export default Routing;
+export default Routing

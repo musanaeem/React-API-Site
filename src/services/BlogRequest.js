@@ -8,6 +8,7 @@ const blogRequest = (method, id='', body='') => {
 
         const url = `${env.REACT_APP_HOST}${env.REACT_APP_BLOG_PATH}${id}`
 
+        console.log(options);
         return fetch(url, options)
         .then(response => response.json())
         .then(data => {

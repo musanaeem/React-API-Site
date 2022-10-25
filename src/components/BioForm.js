@@ -3,36 +3,36 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import bioRequest from '../services/BioRequest';
 //import InputGroup from './InputGroup'
 
-const BioForm = () => {
+const BioForm = (props) => {
 
     const navigate = useNavigate();
 
     const { state } = useLocation();
-    const {data, operation} = state;
 
     const [credentials, setCredentials] = useState({
         name: '',
         address: '',
         description: ''
     })
-
-    const [method, setMethod] = useState('POST')
     
     useEffect(() => {
-      if(operation === 'Update'){
+      if(props.method === 'PATCH'){
+        const {data} = state;
+
         setCredentials({
             name: data.name,
             address: data.address,
             description: data.description
         })
-        setMethod('PATCH');
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const submitForm = event => {
         event.preventDefault();
 
-        bioRequest(method, credentials).then( () => {
+        bioRequest(props.method, credentials).then( () => {
             navigate('/bio');
         })
     }

@@ -33,6 +33,7 @@ const BioPage = (props) => {
 
     useEffect(() => {
         fetchTasksOrRedirect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     
     return (
@@ -51,14 +52,14 @@ const BioPage = (props) => {
                         </div> 
 
                         <div className="methods">
-                        <Link className="method" to='/bio/edit' state={{data: bioData, operation: 'Update', type: 'Bio'}}> Update </Link>
+                        <Link className="method" to='/bio/edit' state={{data: bioData}}> Update </Link>
                         <Link className="method" to='/bio/delete'  state={{username: bioData.user_username}}> Delete </Link>
                         </div>
 
                     </div> 
                 </div>
     ): (<div>
-        <Link className="create_text" to='/bio/edit' state={{ type: 'Bio' }} > Create New </Link>
+        <Link className="create_text" to='/bio/add'> Create New </Link>
         <h1 className='notFound'> Data Not Found</h1>
         </div>
         )}

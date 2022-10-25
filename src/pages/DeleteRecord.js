@@ -2,8 +2,9 @@ import React from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import bioRequest from '../services/BioRequest'
 import '../components/deleteStyle.css'
+import blogRequest from '../services/BlogRequest';
 
-function DeleteRecord() {
+function DeleteRecord(props) {
 
     const {state} = useLocation();
     const navigate = useNavigate();
@@ -15,19 +16,35 @@ function DeleteRecord() {
         })
     }
 
+    const deleteBlog = () => {
+        blogRequest('DELETE', state.id).then( () => {
+            navigate('/blog');
+        })
+
+    }
+
     const deleteRecord = event => {
         event.preventDefault();
 
-        deleteBio();
+        if(props.type === 'Bio'){
+            deleteBio();
+        }
+        else{
+            deleteBlog();
+        }
     }
 
+//Make one component with conditional props
   return (
     <div className='deletePage'>
         <p> Are you sure you want to delete <span>"{state.username}"</span>? </p>
 
         <form>
 
-            <Link to='/bio'> Cancel </Link>
+            {props.type === 'Bio' ? 
+                <Link to='/bio'> Cancel </Link> :
+                <Link to='/blog'> Cancel </Link>
+            }
 
             <input className="submit" type="submit" name="Confirm" value="Confirm" onClick={deleteRecord}/>
 

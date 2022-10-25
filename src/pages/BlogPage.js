@@ -27,6 +27,7 @@ const BlogPage = (props) => {
 
     useEffect(() => {
         fetchTasksOrRedirect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     
 

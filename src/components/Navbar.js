@@ -9,6 +9,7 @@ function Navbar(props) {
 
     const logoutUser = () => {
         window.localStorage.setItem('blogSiteUserLoggedIn', false);
+        window.localStorage.setItem('username', null)
         logoutRequest().then(() => {
             props.changeLoginState(false);
             navigate('/login');
