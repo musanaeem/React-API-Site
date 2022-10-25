@@ -3,11 +3,11 @@ import {
     Route,
     Routes,
   } from 'react-router-dom';
-import {LoginWrapper} from '../pages/LoginPage';
+import LoginPage from '../pages/LoginPage';
 import {HomePageWrapper} from '../pages/HomePage';
 import ProtectedAuthentication from './ProtectedAuthentication';
 import ProtectedRoutes from './ProtectedRoutes';
-
+import RegisterPage from '../pages/RegisterPage';
 
 
 class Routing extends Component {
@@ -19,7 +19,6 @@ class Routing extends Component {
       isLoggedIn: false
     }
 
-    this.updateLoginState = this.updateLoginState.bind();
   }
 
   componentDidMount() {
@@ -48,7 +47,9 @@ class Routing extends Component {
     return (
       <Routes>
           <Route element={<ProtectedAuthentication isLoggedIn = {this.state.isLoggedIn}/> }>
-            <Route path='/login' element={<LoginWrapper  changeLoginState = {this.updateLoginState}/> }/>
+            <Route path='/login' element={<LoginPage  changeLoginState = {this.updateLoginState}/> }/>
+            <Route path='/register' element={<RegisterPage />} />
+
           </Route>
             
           <Route element={<ProtectedRoutes isLoggedIn = {this.state.isLoggedIn}/> }>

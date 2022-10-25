@@ -1,13 +1,14 @@
 import getOptions from "../utils/options";
 
 
-const loginRequest = (credentials) => {
+const registerRequest = (credentials) => {
+
 
     let options = getOptions('POST', credentials)
 
         const env = process.env;
 
-        const url = `${env.REACT_APP_HOST}${env.REACT_APP_LOGIN_PATH}`
+        const url = `${env.REACT_APP_HOST}${env.REACT_APP_REGISTER_PATH}`
 
         return fetch(url, options)
         .then(response => response.json())
@@ -16,4 +17,4 @@ const loginRequest = (credentials) => {
         });
       }
 
-export default loginRequest
+export default registerRequest
