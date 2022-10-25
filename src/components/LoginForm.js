@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import InputGroup from './inputGroup';
+import InputGroup from './InputGroup';
 
 export default class LoginForm extends Component {
 

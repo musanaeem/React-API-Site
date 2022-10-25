@@ -12,14 +12,17 @@ const BlogForm = (props) => {
         title: '',
         content: ''
     })
+    const [id, setId] = useState('');
     
     useEffect(() => {
         if(props.method === 'PUT'){
             const {data} = state;
             setCredentials({
+                user: data.user,
                 title: data.title,
                 content: data.content
             })
+            setId(data.id+'/');
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -28,7 +31,7 @@ const BlogForm = (props) => {
     const submitForm = event => {
         event.preventDefault();
 
-        blogRequest(props.method,'', credentials).then( () => {
+        blogRequest(props.method,id, credentials).then( () => {
             navigate('/blog');
         })
     }

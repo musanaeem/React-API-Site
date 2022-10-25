@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import InputGroup from './inputGroup';
+import InputGroup from './InputGroup';
 
 const RegisterForm = (props) => {
 
