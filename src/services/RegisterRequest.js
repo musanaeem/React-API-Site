@@ -12,7 +12,7 @@ const registerRequest = (credentials) => {
     return fetch(url, options)
     .then(response => response.json())
     .then(data => {
-      return data;
+        return data;
     });
   }
 

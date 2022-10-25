@@ -22,5 +22,4 @@ const getOptions = (method, body = '') => {
         return options
     }
 
-
 export default getOptions
