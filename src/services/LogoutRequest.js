@@ -1,5 +1,6 @@
 import getOptions from "../utils/options";
 
+
 const LogoutRequest = () => {
 
     let options = getOptions('POST');
@@ -14,5 +15,6 @@ const LogoutRequest = () => {
       return data;
     });
   }
+
 
 export default LogoutRequest
