@@ -55,7 +55,7 @@ const RegisterForm = (props) => {
 
 
     // Clears any errors that are displayed on a field already
-    function clearError(input){
+    const clearError = (input) => {
         setFormErrors({
             ...formErrors,
             [input]:''
@@ -63,14 +63,14 @@ const RegisterForm = (props) => {
     }
     
     
-    function isValidUsername(usernameValue){
+    const isValidUsername = (usernameValue) => {
         const usernameRegex = /^[\w-]+$/;
         const message = "Invalid username entered. Please only use a combination of alphanumeric, _ and -";
         return validationForUsernameOrName(usernameValue, 'username', usernameRegex, message);
     }
     
     
-    function validationForUsernameOrName(value, input, regex, message){
+    const validationForUsernameOrName = (value, input, regex, message) => {
         
         if (value.length < 3 || value.length > 15){
             setErrorFor(input, "The length should be 3-15 characters. please try again.");
@@ -86,7 +86,7 @@ const RegisterForm = (props) => {
     }
     
     
-    function setErrorFor(input, message){
+    const setErrorFor = (input, message) => {
         setFormErrors({
             ...formErrors,
             [input]: message
@@ -106,7 +106,7 @@ const RegisterForm = (props) => {
     }
     
     
-    function isValidName(name_value, nameInput){
+    const isValidName = (name_value, nameInput) => {
         const nameRegex = /^[a-z]+$/i;
         const message = "Invalid name entered. Please only use alphabets";
         return validationForUsernameOrName(name_value, nameInput, nameRegex, message);
@@ -137,8 +137,8 @@ const RegisterForm = (props) => {
         unlockOrLockSubmit();
     }
     
-    function isValidEmail(emailValue){
-        // eslint-disable-next-line no-useless-escape
+
+    const isValidEmail = (emailValue) => {
         const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     
         if(!emailRegex.test(emailValue)){
@@ -164,7 +164,7 @@ const RegisterForm = (props) => {
     }
     
     
-    function areValidPasswords(passwordValue, passwordConfirmationValue){
+    const areValidPasswords = (passwordValue, passwordConfirmationValue) => {
         const passwordRegex = /(.*[0-9].*[!@#$%^&*()<>?/.,`~].*)|(.*[!@#$%^&*()<>?/.,`~].*[0-9].*)/;
     
             if(passwordValue !== passwordConfirmationValue){
@@ -186,7 +186,7 @@ const RegisterForm = (props) => {
 
 
 
-    function unlockOrLockSubmit(){
+    const unlockOrLockSubmit = () => {
          setDisabled(!Object.values(results).every((result) => result));
     }
 
