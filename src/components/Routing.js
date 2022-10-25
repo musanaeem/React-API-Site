@@ -24,53 +24,51 @@ const Routing = () => {
 
   useEffect(() => {
 
-    if (!window.localStorage.getItem('blogSiteUserLoggedIn'))
-    {
-      window.localStorage.setItem('blogSiteUserLoggedIn', false);
-      setIsLoggedIn(false)
-    }
-    else{
-      setIsLoggedIn(JSON.parse(window.localStorage.getItem('blogSiteUserLoggedIn')))
-    }// eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+      if (!window.localStorage.getItem('blogSiteUserLoggedIn'))
+      {
+          window.localStorage.setItem('blogSiteUserLoggedIn', false);
+          setIsLoggedIn(false)
+      }
+      else{
+          setIsLoggedIn(JSON.parse(window.localStorage.getItem('blogSiteUserLoggedIn')))
+      }// eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
 
   const updateLoginState = value => {
-    setIsLoggedIn(value)
+      setIsLoggedIn(value)
   }
 
   return (
-    <div>
+      <div>
+          {isLoggedIn && <Navbar  changeLoginState={updateLoginState}/>}
+        
+          <UserContext.Provider value={{user, setUser}}>
+              <Routes>
+                  <Route element={<ProtectedAuthentication isLoggedIn={isLoggedIn}/> }>
+                      <Route path='/login' element={<LoginPage  changeLoginState={updateLoginState}/> }/>
+                      <Route path='/register' element={<RegisterPage />} />
+
+                  </Route>
+
+                  <Route element={<ProtectedRoutes isLoggedIn={isLoggedIn}/> }>
+                      <Route path='/home' element={<HomePage/> }/>
+
+                      <Route path='/bio' element={<BioPage changeLoginState={updateLoginState}/> } />
+                      <Route exact path='/bio/add' element={<UpdateOrCreate  method='POST'  type='Bio'/>  } />
+                      <Route exact path='/bio/edit' element={<UpdateOrCreate  method='PATCH'  type='Bio'/>  } />
+                      <Route exact path='/bio/delete' element={<DeleteRecord  type='Bio'/>} />
+
+                      <Route path='/blog' element={<BlogListPage changeLoginState={updateLoginState}/> }/>
+                      <Route exact path='/blog/add' element={<UpdateOrCreate  method='POST'  type='Blog'/>  } />
+
+                      <Route exact path='/blog/:id' element={<BlogPage changeLoginState={updateLoginState}/> }/>
+                      <Route exact path='/blog/edit/:id' element={<UpdateOrCreate method='PUT'  type='Blog'/> }/>
+                      <Route exact path='/blog/delete/:id' element={<DeleteRecord  type='Blog'/> }/>
+                  </Route>
       
-      {isLoggedIn && <Navbar  changeLoginState = {updateLoginState}/>}
-      
-      <UserContext.Provider value={{user, setUser}}>
-        <Routes>
-            <Route element={<ProtectedAuthentication isLoggedIn = {isLoggedIn}/> }>
-              <Route path='/login' element={<LoginPage  changeLoginState = {updateLoginState}/> }/>
-              <Route path='/register' element={<RegisterPage />} />
-
-            </Route>
-
-            <Route element={<ProtectedRoutes isLoggedIn = {isLoggedIn}/> }>
-                <Route path='/home' element={<HomePage/> }/>
-
-                <Route path='/bio' element={<BioPage changeLoginState = {updateLoginState}/> } />
-                <Route exact path='/bio/add' element={<UpdateOrCreate  method='POST'  type='Bio'/>  } />
-                <Route exact path='/bio/edit' element={<UpdateOrCreate  method='PATCH'  type='Bio'/>  } />
-                <Route exact path='/bio/delete' element={<DeleteRecord  type='Bio'/>} />
-
-                <Route path='/blog' element={<BlogListPage changeLoginState = {updateLoginState}/> }/>
-                <Route exact path='/blog/add' element={<UpdateOrCreate  method='POST'  type='Blog'/>  } />
-
-                <Route exact path='/blog/:id' element={<BlogPage changeLoginState = {updateLoginState}/> }/>
-                <Route exact path='/blog/edit/:id' element={<UpdateOrCreate method='PUT'  type='Blog'/> }/>
-                <Route exact path='/blog/delete/:id' element={<DeleteRecord  type='Blog'/> }/>
-
-
-            </Route>
-        </Routes>
-      </UserContext.Provider>
-    </div>
+              </Routes>
+          </UserContext.Provider>
+      </div>
   )
 }
 

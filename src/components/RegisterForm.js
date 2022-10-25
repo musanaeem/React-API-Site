@@ -31,18 +31,14 @@ const RegisterForm = (props) => {
 
 
     const inputChanged = event => {
-
         setCredentials({
             ...credentials,
             [event.target.name]: event.target.value
         });
-
-        console.log(credentials);
     }
 
     const register = event => {
         event.preventDefault();
-        
         props.onRegister(credentials);
     }
 
@@ -55,7 +51,6 @@ const RegisterForm = (props) => {
             username: isValidUsername(usernameValue),
         });
         unlockOrLockSubmit();
-        console.log(results);
     }
 
 
@@ -65,7 +60,6 @@ const RegisterForm = (props) => {
             ...formErrors,
             [input]:''
         });
-        console.log(formErrors);
     }
     
     
@@ -236,9 +230,9 @@ const RegisterForm = (props) => {
         <p className="error"> {props.error} </p>
 
         <div className="d-flex justify-content-center mt-3 login-container">
-          <input className="btn login-btn" type="submit" value="Register" onClick={register} disabled={disabled}/>
+            <input className="btn login-btn" type="submit" value="Register" onClick={register} disabled={disabled}/>
         </div>
-      </form>
+    </form>
   )
 }
 

@@ -14,13 +14,12 @@ const BlogForm = (props) => {
     })
     
     useEffect(() => {
-      if(props.method === 'PUT'){
-        const {data} = state;
-        console.log(data);
-        setCredentials({
-            title: data.title,
-            content: data.content
-        })
+        if(props.method === 'PUT'){
+            const {data} = state;
+            setCredentials({
+                title: data.title,
+                content: data.content
+            })
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

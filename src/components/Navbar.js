@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import '../components/navbarStyles.css'
 import logoutRequest from '../services/LogoutRequest';
 
-function Navbar(props) {
+const Navbar = (props) => {
 
     const navigate = useNavigate();
 
@@ -14,7 +14,6 @@ function Navbar(props) {
             props.changeLoginState(false);
             navigate('/login');
         });
-        
       }
 
   return (

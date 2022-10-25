@@ -41,7 +41,6 @@ const BlogPage = (props) => {
             <hr/>
             <h3 className="content"> { blogData.content }</h3>
         </div> 
-      
     </div>
   )
 }

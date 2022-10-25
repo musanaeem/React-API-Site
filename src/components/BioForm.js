@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import bioRequest from '../services/BioRequest';
-//import InputGroup from './InputGroup'
 
 const BioForm = (props) => {
 
@@ -16,8 +15,8 @@ const BioForm = (props) => {
     })
     
     useEffect(() => {
-      if(props.method === 'PATCH'){
-        const {data} = state;
+        if(props.method === 'PATCH'){
+            const {data} = state;
 
         setCredentials({
             name: data.name,

@@ -4,7 +4,7 @@ import bioRequest from '../services/BioRequest'
 import '../components/deleteStyle.css'
 import blogRequest from '../services/BlogRequest';
 
-function DeleteRecord(props) {
+const DeleteRecord = (props) => {
 
     const {state} = useLocation();
     const navigate = useNavigate();
