@@ -2,7 +2,7 @@ import getOptions from "../utils/options";
 
 const LogoutRequest = () => {
 
-    let options = getOptions('POST')
+    let options = getOptions('POST');
 
     const env = process.env;
 
@@ -11,8 +11,9 @@ const LogoutRequest = () => {
     return fetch(url, options)
     .then(response => response.json())
     .then(data => {
-      return data;
+        return data;
     });
   }
+
 
 export default LogoutRequest
