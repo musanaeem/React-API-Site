@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import InputGroup from './inputGroup';
 
 export default class LoginForm extends Component {
 
@@ -29,22 +30,14 @@ export default class LoginForm extends Component {
   render() {
     return (
       <form action="">
-                
-        <div className="input-group mb-3">
-          <div className="input-group-append">
-            <span className="input-group-text"> <i className="fas fa-user"></i> </span>
-          </div>
-
+        
+        <InputGroup  className="input-group mb-3"  icon="fas fa-user">
           <input type="text" name="email" placeholder="Email..." className="form-control" value={this.state.credentials.email} onChange={this.inputChanged}/>
-        </div>
+        </InputGroup>
 
-        <div className="input-group mb-2">
-          <div className="input-group-append">
-            <span className="input-group-text"><i className="fas fa-key"></i></span>
-          </div>
-
+        <InputGroup  className="input-group mb-2"  icon="fas fa-key">
           <input type="password" name="password" placeholder="Password..." className="form-control" value={this.state.credentials.password} onChange={this.inputChanged}/>
-        </div>
+        </InputGroup>
 
         <p className="error"> {this.props.error} </p>
 
