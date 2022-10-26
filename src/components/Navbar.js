@@ -17,21 +17,36 @@ const Navbar = (props) => {
       }
 
   return (
-    <nav className='nav'>
-        <Link to='/home' className='site-title'> Arbisoft Blogs </Link>
-        <ul>
-            <li>
-                <Link to='/bio'> Bio </Link>
-            </li>
-            <li>
-                <Link to='/blog'> Blogs </Link>
-            </li>
-            <li className='logout-li' onClick={logoutUser}>
-                 Logout 
-            </li>
-        </ul>
+    <nav >
+
+        {props.loginState ? (
+            <div className='nav'>
+                <Link to='/home' className='site-title'> Arbisoft Blogs </Link>
+                <ul>
+                    <li>
+                        <Link to='/bio'> Bio </Link>
+                    </li>
+                    <li>
+                        <Link to='/blog'> Blogs </Link>
+                    </li>
+                    <li className='logout-li' onClick={logoutUser}>
+                        Logout 
+                    </li>
+                </ul>
+            </div>
+        ) : (<div className='nav'>
+                <Link to='/home' className='site-title'> Arbisoft Blogs </Link>
+                    <ul>
+                        <li>
+                            <Link to='/login' className='signIn-btn'> Sign In </Link>
+                        </li>
+                    </ul>
+            </div>)
+    }
+        
         
     </nav>
+
   )
 }
 

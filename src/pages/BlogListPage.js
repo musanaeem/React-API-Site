@@ -12,7 +12,7 @@ const BlogListPage = (props) => {
     const [blogData, setBlogData] = useState('');
     const {user} = useContext(UserContext);
     
-    const fetchTasksOrRedirect = () => {
+    const fetchBlogsOrRedirect = () => {
         
 
 
@@ -30,7 +30,7 @@ const BlogListPage = (props) => {
     }
 
     useEffect(() => {
-        fetchTasksOrRedirect();
+        fetchBlogsOrRedirect();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 

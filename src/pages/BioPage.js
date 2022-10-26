@@ -11,7 +11,7 @@ const BioPage = (props) => {
     const body = '';
     const bioText = `'s Bio`;
     
-    const fetchTasksOrRedirect = () => {
+    const fetchBioOrRedirect = () => {
         bioRequest(method, body).then(data => { 
             if(data.detail === "Not found."){
                 setIsData(false);
@@ -30,7 +30,7 @@ const BioPage = (props) => {
     }
 
     useEffect(() => {
-        fetchTasksOrRedirect();
+        fetchBioOrRedirect();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     

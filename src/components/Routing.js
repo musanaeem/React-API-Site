@@ -40,7 +40,7 @@ const Routing = () => {
 
   return (
       <div>
-          {isLoggedIn && <Navbar  changeLoginState={updateLoginState}/>}
+          <Navbar  loginState={isLoggedIn}  changeLoginState = {updateLoginState}/>
         
           <UserContext.Provider value={{user, setUser}}>
               <Routes>
