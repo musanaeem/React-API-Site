@@ -28,12 +28,11 @@ const BioPage = (props) => {
 
     useEffect(() => {
         fetchBioOrRedirect();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     
     return (
         <div className='bioPage'>
-            <h1 className="username"> <span className="user">{bioData.user_username}'s Bio </span></h1>
+            <h1 className="username"> <span className="user">{bioData.user_username} Bio </span></h1>
 
             <CreateButton  path='bio/add'/>
 

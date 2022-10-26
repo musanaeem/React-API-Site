@@ -5,7 +5,7 @@ import RegisterForm from '../components/RegisterForm';
 import registerRequest from '../services/RegisterRequest';
 
 
-const RegisterPage = (props) => {
+const RegisterPage = () => {
 
     const [error, setError] = useState('');
     const navigate = useNavigate();

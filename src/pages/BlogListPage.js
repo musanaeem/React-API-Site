@@ -29,7 +29,6 @@ const BlogListPage = (props) => {
 
     useEffect(() => {
         fetchBlogsOrRedirect();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
 
@@ -41,7 +40,7 @@ const BlogListPage = (props) => {
             {
                 Object.values(blogData).map(blog => (
                     
-                    <RecordContainer  className='blog-record'>
+                    <RecordContainer  className='blog-record' key={blog.id}>
                         <h3 className="created"> Created: {moment(blog.created).fromNow()} </h3>
                         <Link className="link" to={'/blog/:id'} state={{ id: blog.user }}>
                             <h1 className="title blogs-label"> { blog.title } </h1> 
