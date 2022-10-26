@@ -8,11 +8,9 @@ const BioPage = (props) => {
     const [bioData, setBioData] = useState('');
     const method = 'GET';
     const body = '';
-    
-    const fetchTasksOrRedirect = () => {
-        
 
 
+    const fetchBioOrRedirect = () => {
         bioRequest(method, body).then(data => { 
             if(data.detail){
                 props.changeLoginState(false);
@@ -27,7 +25,8 @@ const BioPage = (props) => {
     }
 
     useEffect(() => {
-        fetchTasksOrRedirect();
+        fetchBioOrRedirect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     
     return (

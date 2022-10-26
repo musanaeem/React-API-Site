@@ -17,7 +17,7 @@ const RegisterPage = (props) => {
         registerRequest(credentials).then( data => {
             
             let detail = Object.values(data).find( dataValue => {
-                return dataValue == errorMessage;
+                return dataValue === errorMessage;
               });
 
             if(detail){

@@ -50,7 +50,7 @@ class Routing extends Component {
   render() {
     return (
       <>
-      {this.state.isLoggedIn && <Navbar  changeLoginState = {this.updateLoginState}/>}
+       <Navbar  loginState={this.state.isLoggedIn}  changeLoginState = {this.updateLoginState}/>
       <Routes>
           <Route element={<ProtectedAuthentication isLoggedIn = {this.state.isLoggedIn}/> }>
             <Route path='/login' element={<LoginPage  changeLoginState = {this.updateLoginState}/> }/>

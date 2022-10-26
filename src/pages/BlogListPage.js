@@ -11,10 +11,7 @@ const BlogListPage = (props) => {
     const [blogData, setBlogData] = useState('');
     
     
-    const fetchTasksOrRedirect = () => {
-        
-
-
+    const fetchBlogsOrRedirect = () => {
         blogRequest('GET').then(data => { 
             if(data.detail){
                 props.changeLoginState(false);
@@ -29,7 +26,8 @@ const BlogListPage = (props) => {
     }
 
     useEffect(() => {
-        fetchTasksOrRedirect();
+        fetchBlogsOrRedirect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
 
