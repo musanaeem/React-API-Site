@@ -8,7 +8,6 @@ const getOptions = (method, body = '') => {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': null,
             'X-CSRFToken': Cookies.get('csrftoken')
         },
         credentials: 'include'

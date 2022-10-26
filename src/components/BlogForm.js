@@ -18,7 +18,6 @@ const BlogForm = (props) => {
         if(props.method === 'PUT'){
             const {data} = state;
             setCredentials({
-                user: data.user,
                 title: data.title,
                 content: data.content
             })
