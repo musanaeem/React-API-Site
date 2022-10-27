@@ -31,7 +31,7 @@ const Routing = () => {
       }
       else{
           setIsLoggedIn(JSON.parse(window.localStorage.getItem('blogSiteUserLoggedIn')))
-      }// eslint-disable-next-line react-hooks/exhaustive-deps
+      }
     },[])
 
   const updateLoginState = value => {

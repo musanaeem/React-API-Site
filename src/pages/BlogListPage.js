@@ -28,7 +28,6 @@ const BlogListPage = (props) => {
 
     useEffect(() => {
         fetchBlogsOrRedirect();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
 

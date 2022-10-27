@@ -37,7 +37,7 @@ const DeleteRecord = (props) => {
 //Make one component with conditional props
   return (
     <div className='deletePage'>
-        <p className='delete-message'> Are you sure you want to delete <span className='delete-username'>"{state.username}"</span>? </p>
+        <p className='delete-message'> Are you sure you want to delete <span className='delete-username'>&quot{state.username}&quot</span>? </p>
 
         <form className='delete-form'>
 
