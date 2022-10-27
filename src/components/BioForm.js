@@ -25,7 +25,6 @@ const BioForm = (props) => {
         })
     }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const submitForm = event => {

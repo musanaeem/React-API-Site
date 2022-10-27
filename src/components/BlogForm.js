@@ -24,7 +24,6 @@ const BlogForm = (props) => {
             setId(data.id+'/');
     }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const submitForm = event => {
