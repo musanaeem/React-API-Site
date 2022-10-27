@@ -8,8 +8,8 @@ function Navbar(props) {
     const navigate = useNavigate();
 
     const logoutUser = () => {
-        window.localStorage.setItem('blogSiteUserLoggedIn', false);
         logoutRequest().then( () =>{
+            window.localStorage.setItem('blogSiteUserLoggedIn', false);
             props.changeLoginState(false);
             navigate('/login');
         });
