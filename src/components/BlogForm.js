@@ -44,14 +44,14 @@ const BlogForm = (props) => {
 
 
   return (
-    <div className="form-container">
-        <h1> Enter details for the record </h1>
+    <div className='form-outline'>
+        <h1 className='info-form-heading'> Enter details for the record </h1>
 
-        <form action="">
-            <div className="form-inputs">
+        <form action="" className='blog-form'>
+            <div className="form-list">
         
                 <li>
-                    <label> Title:</label>
+                    <label className='form-title'> Title:</label>
                     <input type="text" name="title" value={credentials.title} onChange={inputChanged}/>
                 </li>
 
@@ -62,7 +62,7 @@ const BlogForm = (props) => {
 
             </div>
 
-            <input className="submit" type="submit" name="Submit" onClick={submitForm}/>
+            <input className="submit-request" type="submit" name="Submit" onClick={submitForm}/>
         </form>
     </div>
   )

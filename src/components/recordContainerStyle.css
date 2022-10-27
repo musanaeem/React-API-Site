@@ -1,0 +1,32 @@
+.record {
+    margin-top: 60px;
+    margin-left: 80px;
+    background: #74cfbf;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    line-height: 10px;
+}
+
+.labels {
+    margin-bottom: 20px;
+    margin-left: 8px;
+}
+
+.labels h3{
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 20px;
+}
+
+.labels h1{
+    font-family: 'Roboto Slab', serif;
+}

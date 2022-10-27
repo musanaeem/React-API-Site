@@ -1,0 +1,15 @@
+.method {
+    text-decoration: none;
+    color: lightyellow;
+    background-color: #f7ba5b; /* Green */
+    border: none;
+    padding: 10px 24px;
+    text-align: center;
+    font-size: 16px;
+    border-radius:20px;
+}
+
+.methods {
+    display: flex;
+    justify-content: space-around;
+}

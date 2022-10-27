@@ -44,11 +44,11 @@ const BioForm = (props) => {
     }
 
   return (
-    <div className="form-container">
-        <h1> Enter details for the record </h1>
+    <div className='form-outline'>
+        <h1 className='info-form-heading'> Enter details for the record </h1>
 
-        <form action="">
-            <div className="form-inputs">
+        <form action="" className='bio-form'>
+            <div className="form-list">
         
                 <li>
                     <label> Name:</label>
@@ -68,7 +68,7 @@ const BioForm = (props) => {
             </div>
             
 
-            <input className="submit" type="submit" name="Submit" onClick={submitForm}/>
+            <input className="submit-request" type="submit" name="Submit" onClick={submitForm}/>
         </form>
     </div>
   )

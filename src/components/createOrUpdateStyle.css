@@ -1,4 +1,4 @@
-.UpdateOrCreate h1 {
+.info-form-heading {
     margin: 0;
     display: block;
     margin-right: auto;
@@ -15,7 +15,7 @@
     font-family: 'Roboto Slab', serif;
 }
 
-.UpdateOrCreate label{
+.form-list label{
     margin-left: 10px;
     font-size: large;
     font-weight: bold;
@@ -23,7 +23,7 @@
 
 }
 
-.UpdateOrCreate li {
+.form-list li {
     list-style-type: none;
     display: flex;
     justify-content: space-between;
@@ -33,27 +33,23 @@
 
 }
 
-.UpdateOrCreate input {
+.form-list input {
     border-radius: 7px;
     height: 30px;
     width: 70%;
     font-size: large;
+    margin-right: 20px;
 }
-/* 
-.UpdateOrCreate .form-inputs{
+
+.form-list{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     
-} */
-
-
-.UpdateOrCreate input:not(.submit) {
-    margin-right: 20px;
 }
 
-
-.UpdateOrCreate .submit {
+.submit-request {
+    border-radius: 7px;
     width: 30%;
     display: block;
     margin-right: auto;
@@ -64,13 +60,13 @@
     
 }
 
-.UpdateOrCreate .submit:hover {
+.submit-request:hover {
     box-shadow: none;
     outline: 0px;
     opacity: 0.8;
 }
 
-.UpdateOrCreate textarea {
+textarea {
     border-radius: 5px;
     margin-right: 20px;
     width: 70%;
@@ -79,7 +75,8 @@
 
 }
 
-.UpdateOrCreate form {
+.bio-form,
+.blog-form {
     width: 100%;
     background: #74cfbf;
     display: block;
@@ -97,6 +94,6 @@
     
 }
 
-.UpdateOrCreate .form-container{
+.form-outline{
     margin-top: 50px;
 }

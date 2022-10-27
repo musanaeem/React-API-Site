@@ -2,7 +2,7 @@ import React from 'react'
 import BioForm from '../components/BioForm';
 import BlogForm from '../components/BlogForm';
 import FormContainer from '../components/FormContainer';
-import '../components/bioCreateStyle.css'
+import '../components/createOrUpdateStyle.css'
 
 const UpdateOrCreate = (props) => {
 

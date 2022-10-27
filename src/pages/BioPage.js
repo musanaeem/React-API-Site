@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import bioRequest from '../services/BioRequest';
 import '../components/bioStyle.css'
+import RecordContainer from '../components/RecordContainer';
+import CreateButton from '../components/CreateButton';
 
 const BioPage = (props) => {
     const navigate = useNavigate();
@@ -42,21 +44,15 @@ const BioPage = (props) => {
                 <div>
                     <p className="messages">  </p>
 
-                    <div className="record">
-                        <div className="labels">
-                            <h1 className="name"> { bioData.name }</h1>
-                            <h3> Address: { bioData.address }</h3>
-                            <h3> Description: { bioData.description }</h3>
-                        </div> 
+                    <RecordContainer  recordClassName='bio-record' type='Bio' data={bioData}>
+                        <h1 className="name"> { bioData.name }</h1>
+                        <h3> Address: { bioData.address }</h3>
+                        <h3> Description: { bioData.description }</h3>
+                    </RecordContainer>
 
-                        <div className="methods">
-                            <Link className="method" to='/bio/edit' state={{data: bioData}}> Update </Link>
-                            <Link className="method" to='/bio/delete'  state={{username: bioData.user_username}}> Delete </Link>
-                        </div>
-                    </div> 
                 </div>
             ): (<div>
-                    <Link className="create_text" to='/bio/add'> Create New </Link>
+                    <CreateButton  path='add'/>
                     <h1 className='notFound'> Data Not Found</h1>
                 </div>
         )}

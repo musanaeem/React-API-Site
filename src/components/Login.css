@@ -13,7 +13,7 @@
     border-radius: 5px;
 }
 
-.Authentication-body .error{
+.error{
     text-align: center;
     color: rgb(211, 12, 12);
     text-align: center;
@@ -31,23 +31,23 @@
     color: #fff;
 }
 
-.Authentication-body input.login-btn {
+input.login-btn {
     width: 100%;
     background: #33ccff;
     color: white;
     margin-top: 20px;
 }
 
-.Authentication-body input.login-btn:focus {
+input.login-btn:focus {
     box-shadow: none;
     outline: 0px;
 }
 
-.Authentication-body div.login-container {
+div.login-container {
     padding: 0 2rem;
 }
 
-.Authentication-body span.input-group-text{
+span.input-group-text{
     background: #f7ba5b;
     color: white;
     border: 0;
@@ -55,17 +55,17 @@
     height: 37px;
 }
 
-.Authentication-body .input-user,
-.Authentication-body .input-pass:focus {
+.input-user,
+.input-pass:focus {
     box-shadow: none;
     outline: 0px;
 }
 
-.Authentication-body small{
+small{
     color: red;
 }
 
-.Authentication-body .successMessage{
+.successMessage{
     color:green;
     text-align: center;
     margin-top: 10px;

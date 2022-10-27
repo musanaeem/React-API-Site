@@ -1,40 +1,15 @@
-.blogPage .user {
-    font-weight: bold;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-}
-
-.blogPage .heading {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    clear: both;
-    text-align: center;
-    color: lightgoldenrodyellow;
-}
-
-.blogPage .created{
-    margin-bottom: 34px;
-}
-
-
-.blogPage .title {
+.blog-title {
     margin:40px;
     margin-bottom: 80px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
-.blogPage .labels  {
-    margin-bottom: 20px;
-    margin-left: 8px;
-    
-}
-
-.blogPage .author{
+.blog-author{
     margin-left: 80px;
     font-size: large;
-
 }
 
-.blogPage .content{
+.content{
     margin: 40px;
     width: 93%;
     line-height: 35px;
