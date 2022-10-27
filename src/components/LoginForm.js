@@ -30,7 +30,6 @@ export default class LoginForm extends Component {
   render() {
     return (
       <form action="">
-        
           <InputGroup  className="input-group mb-3"  icon="fas fa-user">
               <input type="text" name="email" placeholder="Email..." className="form-control" value={this.state.credentials.email} onChange={this.inputChanged}/>
           </InputGroup>

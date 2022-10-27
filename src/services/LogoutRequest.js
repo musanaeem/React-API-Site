@@ -13,7 +13,7 @@ const LogoutRequest = () => {
     .then(data => {
         return data;
     });
-  }
+}
 
 
 export default LogoutRequest

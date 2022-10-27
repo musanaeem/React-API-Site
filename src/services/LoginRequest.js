@@ -13,7 +13,7 @@ const loginRequest = (credentials) => {
     .then(data => {
         return data;
     });
-  }
+}
 
 
 export default loginRequest
