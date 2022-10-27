@@ -35,8 +35,8 @@ const BlogPage = (props) => {
         <h1 className="heading"><span> Blog </span></h1>
 
         <div className="labels">
-            <h1 className="title"> { blogData.title } </h1>
-            <h4 className="author"> { blogData.user_username } | { blogData.created }</h4>
+            <h1 className="blog-title"> { blogData.title } </h1>
+            <h4 className="blog-author"> { blogData.user_username } | { blogData.created }</h4>
             <hr/>
             <h3 className="content"> { blogData.content }</h3>
         </div> 
