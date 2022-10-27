@@ -35,8 +35,6 @@ const RegisterForm = (props) => {
             ...credentials,
             [event.target.name]: event.target.value
         });
-
-        console.log(credentials);
     }
 
     const register = event => {
@@ -54,7 +52,6 @@ const RegisterForm = (props) => {
             username: isValidUsername(usernameValue),
         });
         unlockOrLockSubmit();
-        console.log(results);
     }
 
 
@@ -64,7 +61,6 @@ const RegisterForm = (props) => {
             ...formErrors,
             [input]:''
         });
-        console.log(formErrors);
     }
     
     
