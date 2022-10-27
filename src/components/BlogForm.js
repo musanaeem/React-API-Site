@@ -42,29 +42,29 @@ const BlogForm = (props) => {
     }
 
 
-  return (
-    <div className='form-outline'>
-        <h1 className='info-form-heading'> Enter details for the record </h1>
+    return (
+        <div className='form-outline'>
+            <h1 className='info-form-heading'> Enter details for the record </h1>
 
-        <form action="" className='blog-form'>
-            <div className="form-list">
-        
-                <li>
-                    <label className='form-title'> Title:</label>
-                    <input type="text" name="title" value={credentials.title} onChange={inputChanged}/>
-                </li>
+            <form action="" className='blog-form'>
+                <div className="form-list">
+            
+                    <li>
+                        <label className='form-title'> Title:</label>
+                        <input type="text" name="title" value={credentials.title} onChange={inputChanged}/>
+                    </li>
 
-                <li>
-                    <label> Content:</label>
-                    <textarea name="content" cols="40" rows="10" value={credentials.content} onChange={inputChanged}/>
-                </li>
+                    <li>
+                        <label> Content:</label>
+                        <textarea name="content" cols="40" rows="10" value={credentials.content} onChange={inputChanged}/>
+                    </li>
 
-            </div>
+                </div>
 
-            <input className="submit-request" type="submit" name="Submit" onClick={submitForm}/>
-        </form>
-    </div>
-  )
+                <input className="submit-request" type="submit" name="Submit" onClick={submitForm}/>
+            </form>
+        </div>
+    )
 }
 
 export default BlogForm

@@ -10,7 +10,6 @@ const Methods = (props) => {
     const {user} = useContext(UserContext);
 
     const getBioMethods = () => {
-        console.log("here");
         return(
             <div className="methods">
                 <Link className="method" to='/bio/edit' state={{data: props.data}}> Update </Link>

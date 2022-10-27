@@ -42,35 +42,35 @@ const BioForm = (props) => {
         });
     }
 
-  return (
-    <div className='form-outline'>
-        <h1 className='info-form-heading'> Enter details for the record </h1>
+    return (
+        <div className='form-outline'>
+            <h1 className='info-form-heading'> Enter details for the record </h1>
 
-        <form action="" className='bio-form'>
-            <div className="form-list">
-        
-                <li>
-                    <label> Name:</label>
-                    <input type="text" name="name" value={credentials.name} onChange={inputChanged}/>
-                </li>
-
-                <li>
-                    <label> Address:</label>
-                    <input type="text" name="address"  value={credentials.address} onChange={inputChanged}/>
-                </li>
-
-                <li>
-                    <label> Description:</label>
-                    <textarea name="description" cols="40" rows="10" value={credentials.description} onChange={inputChanged}/>
-                </li>
-
-            </div>
+            <form action="" className='bio-form'>
+                <div className="form-list">
             
+                    <li>
+                        <label> Name:</label>
+                        <input type="text" name="name" value={credentials.name} onChange={inputChanged}/>
+                    </li>
 
-            <input className="submit-request" type="submit" name="Submit" onClick={submitForm}/>
-        </form>
-    </div>
-  )
+                    <li>
+                        <label> Address:</label>
+                        <input type="text" name="address"  value={credentials.address} onChange={inputChanged}/>
+                    </li>
+
+                    <li>
+                        <label> Description:</label>
+                        <textarea name="description" cols="40" rows="10" value={credentials.description} onChange={inputChanged}/>
+                    </li>
+
+                </div>
+                
+
+                <input className="submit-request" type="submit" name="Submit" onClick={submitForm}/>
+            </form>
+        </div>
+    )
 }
 
 export default BioForm
