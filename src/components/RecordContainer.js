@@ -4,14 +4,9 @@ import Methods from './Methods';
 
 const RecordContainer = ({recordClassName, type, children, id, data}) => {
 
-    const getClassName = () => {
-        let className = recordClassName + " record";
-
-        return className
-    }
 
   return (
-    <div className={getClassName()}>
+    <div className={`${recordClassName} record`}>
         <div className="labels">
             {children}
         </div>
