@@ -8,12 +8,14 @@ const Navbar = (props) => {
     const navigate = useNavigate();
 
     const logoutUser = () => {
+
         logoutRequest().then(() => {
             window.localStorage.setItem('blogSiteUserLoggedIn', false);
             window.localStorage.setItem('username', null)
             props.changeLoginState(false);
             navigate('/login');
         });
+
       }
 
   return (
@@ -42,6 +44,7 @@ const Navbar = (props) => {
             }
             </ul>
         </div>
+
         
         
     </nav>

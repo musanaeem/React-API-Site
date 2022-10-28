@@ -5,5 +5,6 @@ export default class ProtectedRoutes extends Component {
 
   render() {
       return (this.props.isLoggedIn === true) ? <Outlet/> : <Navigate to='/login'/>;
+
   }
 }
