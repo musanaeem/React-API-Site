@@ -123,6 +123,7 @@ const RegisterForm = (props) => {
         unlockOrLockSubmit();
     }
     
+
     const validatePasswords = () => {
         clearError('passwords');
     

@@ -1,8 +1,10 @@
 import React from 'react'
 import '../components/recordContainerStyle.css'
+
 import Methods from './Methods';
 
 const RecordContainer = ({recordClassName, type, children, id, data}) => {
+
 
   return (
     <div className={`${recordClassName} record`}>
