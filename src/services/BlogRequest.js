@@ -14,6 +14,7 @@ const blogRequest = (method, id='', body='') => {
     .then(data => {
         return data;
     });
-    }
+}
+
 
 export default blogRequest

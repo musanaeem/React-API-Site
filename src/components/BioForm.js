@@ -48,7 +48,7 @@ const BioForm = (props) => {
 
             <form action="" className='bio-form'>
                 <div className="form-list">
-            
+
                     <li>
                         <label> Name:</label>
                         <input type="text" name="name" value={credentials.name} onChange={inputChanged}/>

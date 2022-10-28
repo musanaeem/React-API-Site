@@ -1,8 +1,6 @@
 import getOptions from "../utils/options";
 
 const registerRequest = (credentials) => {
-   
-
 
     let options = getOptions('POST', credentials);
 
@@ -15,6 +13,6 @@ const registerRequest = (credentials) => {
     .then(data => {
         return data;
     });
-  }
+}
 
 export default registerRequest

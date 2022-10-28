@@ -23,7 +23,6 @@ const BlogForm = (props) => {
             })
             setId(data.id+'/');
     }
-
     }, []);
 
     const submitForm = event => {
@@ -65,6 +64,7 @@ const BlogForm = (props) => {
             </form>
         </div>
     )
+
 }
 
 export default BlogForm
