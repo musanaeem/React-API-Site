@@ -1,0 +1,17 @@
+.blog-title {
+    margin:40px;
+    margin-bottom: 80px;
+
+}
+
+.blog-author{
+    margin-left: 80px;
+    font-size: large;
+}
+
+.content{
+    margin: 40px;
+    width: 93%;
+    line-height: 35px;
+    font-size: larger;
+}

@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+.user {
+    font-weight: bold;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.messages {
+    margin: 30px;
+    margin-left: 58px;
+    color: darkred;
+    font-weight: bold;
+}
+
+.bio-record {
+    width: 350px;
+}
+
+.name {
+    margin-bottom:50px;
+}
+
+.username{
+    margin: 40px;
+    text-align: center;
+}
+
+

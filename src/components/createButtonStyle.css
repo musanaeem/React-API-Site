@@ -1,0 +1,16 @@
+.create_text {
+    text-decoration: none;
+    color: lightyellow;
+    margin: 45px;
+    margin-right: 20px;
+    background-color: #f7ba5b; /* Green */
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    border-radius:25px;
+}
+
+.create_text:hover{
+    color: white;
+}

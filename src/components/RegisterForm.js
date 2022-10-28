@@ -35,8 +35,6 @@ const RegisterForm = (props) => {
             ...credentials,
             [event.target.name]: event.target.value
         });
-
-        console.log(credentials);
     }
 
     const register = event => {
@@ -54,17 +52,15 @@ const RegisterForm = (props) => {
             username: isValidUsername(usernameValue),
         });
         unlockOrLockSubmit();
-        console.log(results);
     }
-    
-    
+
+
     // Clears any errors that are displayed on a field already
     const clearError = (input) => {
         setFormErrors({
             ...formErrors,
             [input]:''
         });
-        console.log(formErrors);
     }
     
     
@@ -143,7 +139,7 @@ const RegisterForm = (props) => {
     }
     
     const isValidEmail = (emailValue) => {
-        const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     
         if(!emailRegex.test(emailValue)){
             setErrorFor('email', "Invalid Email. The email format entered is not valid.");

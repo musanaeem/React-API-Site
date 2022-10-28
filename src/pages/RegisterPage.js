@@ -5,11 +5,10 @@ import RegisterForm from '../components/RegisterForm';
 import registerRequest from '../services/RegisterRequest';
 
 
-const RegisterPage = (props) => {
+const RegisterPage = () => {
 
     const [error, setError] = useState('');
     const navigate = useNavigate();
-
 
     const registerUser = (credentials) => {
     
@@ -18,7 +17,7 @@ const RegisterPage = (props) => {
         registerRequest(credentials).then( data => {
             
             let detail = Object.values(data).find( dataValue => {
-                return dataValue == errorMessage;
+                return dataValue === errorMessage;
               });
 
             if(detail){
@@ -32,7 +31,7 @@ const RegisterPage = (props) => {
             }
         });
     }
-    
+
 
 
     return (
