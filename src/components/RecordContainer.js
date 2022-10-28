@@ -3,14 +3,8 @@ import '../components/recordContainerStyle.css'
 
 const RecordContainer = (props) => {
 
-    const getClassName = () => {
-        let className = props.className + " record";
-
-        return className
-    }
-
   return (
-    <div className={getClassName()}>
+    <div className={`${props.className} record`}>
         <div className="labels">
             {props.children}
         </div> 
