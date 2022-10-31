@@ -12,10 +12,9 @@ const RegisterPage = () => {
 
     const registerUser = (credentials) => {
     
-        const errorMessage = 'This field is required.'
+        const errorMessage = 'This field is required.';
 
         registerRequest(credentials).then( data => {
-            
             let detail = Object.values(data).find( dataValue => {
                 return dataValue === errorMessage;
               });
@@ -32,12 +31,10 @@ const RegisterPage = () => {
         });
     }
 
-
-
     return (
-        <div>
+        <div className='Authentication-body'>
             <FormContainer title='Register' alternateTitle='Login'  accountMessage='Already have an account?' link='/login'>
-                <RegisterForm onRegister = {registerUser} error = {error}/>
+                <RegisterForm onRegister={registerUser} error={error}/>
             </FormContainer>
         </div>
     )

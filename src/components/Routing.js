@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Route,
     Routes,
@@ -12,63 +12,64 @@ import Navbar from './Navbar';
 import BioPage from '../pages/BioPage';
 import BlogListPage from '../pages/BlogListPage';
 import BlogPage from '../pages/BlogPage';
+import UpdateOrCreate from '../pages/UpdateOrCreate';
+import DeleteRecord from '../pages/DeleteRecord';
+import { UserContext } from './UserContext';
 
 
-class Routing extends Component {
+const Routing = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [user, setUser] = useState(window.localStorage.getItem('username'));
 
-  constructor(props){
-    super(props);
+    useEffect(() => {
 
-    this.state = {
-      isLoggedIn: false
+        if (!window.localStorage.getItem('blogSiteUserLoggedIn'))
+        {
+            window.localStorage.setItem('blogSiteUserLoggedIn', false);
+            setIsLoggedIn(false)
+        }
+        else{
+            setIsLoggedIn(JSON.parse(window.localStorage.getItem('blogSiteUserLoggedIn')))
+        }
+        },[])
+
+    const updateLoginState = value => {
+        setIsLoggedIn(value)
     }
 
-  }
-
-  componentDidMount() {
-    if (!window.localStorage.getItem('blogSiteUserLoggedIn'))
-    {
-      window.localStorage.setItem('blogSiteUserLoggedIn', false);
-      this.setState({
-        isLoggedIn: false
-      })
-    }
-    else{
-      this.setState({
-        isLoggedIn: JSON.parse(window.localStorage.getItem('blogSiteUserLoggedIn'))
-      })
-    }
-  }
-
-   updateLoginState = value => {
-    this.setState({
-      isLoggedIn: value
-    })
-  }
-  
-
-  render() {
     return (
-      <>
-       <Navbar  loginState={this.state.isLoggedIn}  changeLoginState = {this.updateLoginState}/>
-      <Routes>
-          <Route element={<ProtectedAuthentication isLoggedIn = {this.state.isLoggedIn}/> }>
-            <Route path='/login' element={<LoginPage  changeLoginState = {this.updateLoginState}/> }/>
-            <Route path='/register' element={<RegisterPage />} />
+        <div>
+            <Navbar  loginState={isLoggedIn}  changeLoginState = {updateLoginState}/>
+            
+            <UserContext.Provider value={{user, setUser}}>
+                <Routes>
+                    <Route element={<ProtectedAuthentication isLoggedIn={isLoggedIn}/> }>
+                        <Route path='/login' element={<LoginPage  changeLoginState={updateLoginState}/> }/>
+                        <Route path='/register' element={<RegisterPage />} />
 
-          </Route>
+                    </Route>
 
-          <Route element={<ProtectedRoutes isLoggedIn = {this.state.isLoggedIn}/> }>
-            <Route path='/home' element={<HomePage/> }/>
-            <Route path='/bio' element={<BioPage changeLoginState = {this.updateLoginState}/> } />
-            <Route path='/blog' element={<BlogListPage changeLoginState = {this.updateLoginState}/> }/>
-            <Route exact path='/blog/:id' element={<BlogPage changeLoginState = {this.updateLoginState}/> }/>
 
-          </Route>
-      </Routes>
-      </>
+                    <Route element={<ProtectedRoutes isLoggedIn={isLoggedIn}/> }>
+                        <Route path='/home' element={<HomePage/> }/>
+
+                        <Route path='/bio' element={<BioPage changeLoginState={updateLoginState}/> } />
+                        <Route exact path='/bio/add' element={<UpdateOrCreate  method='POST'  type='Bio'/>  } />
+                        <Route exact path='/bio/edit' element={<UpdateOrCreate  method='PATCH'  type='Bio'/>  } />
+                        <Route exact path='/bio/delete' element={<DeleteRecord  type='Bio'/>} />
+
+                        <Route path='/blog' element={<BlogListPage changeLoginState={updateLoginState}/> }/>
+                        <Route exact path='/blog/add' element={<UpdateOrCreate  method='POST'  type='Blog'/>  } />
+
+                        <Route exact path='/blog/:id' element={<BlogPage changeLoginState={updateLoginState}/> }/>
+                        <Route exact path='/blog/edit/:id' element={<UpdateOrCreate method='PUT'  type='Blog'/> }/>
+                        <Route exact path='/blog/delete/:id' element={<DeleteRecord  type='Blog'/> }/>
+                    </Route>
+        
+                </Routes>
+            </UserContext.Provider>
+        </div>
     )
-  }
 }
 
-export default Routing;
+export default Routing

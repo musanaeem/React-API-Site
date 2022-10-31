@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import InputGroup from './InputGroup';
 
 export default class LoginForm extends Component {
 
@@ -12,7 +13,6 @@ export default class LoginForm extends Component {
             }
         }
     }
-
 
     inputChanged = event => {
         const credentials = this.state.credentials;
@@ -29,30 +29,21 @@ export default class LoginForm extends Component {
   render() {
     return (
       <form action="">
-                
-        <div className="input-group mb-3">
-          <div className="input-group-append">
-            <span className="input-group-text"> <i className="fas fa-user"></i> </span>
+          <InputGroup  className="input-group mb-3"  icon="fas fa-user">
+              <input type="text" name="email" placeholder="Email..." className="form-control" value={this.state.credentials.email} onChange={this.inputChanged}/>
+          </InputGroup>
+
+          <InputGroup  className="input-group mb-2"  icon="fas fa-key">
+              <input type="password" name="password" placeholder="Password..." className="form-control" value={this.state.credentials.password} onChange={this.inputChanged}/>
+          </InputGroup>
+
+          <p className="error"> {this.props.error} </p>
+
+          {this.props.successMessage && <p className='successMessage'> Registration Successful </p>}
+
+          <div  className="d-flex justify-content-center mt-3 login-container">
+              <input  className="btn login-btn" type="submit" value="Login" onClick={this.login}/>
           </div>
-
-          <input type="text" name="email" placeholder="Email..." className="form-control" value={this.state.credentials.email} onChange={this.inputChanged}/>
-        </div>
-
-        <div className="input-group mb-2">
-          <div className="input-group-append">
-            <span className="input-group-text"><i className="fas fa-key"></i></span>
-          </div>
-
-          <input type="password" name="password" placeholder="Password..." className="form-control" value={this.state.credentials.password} onChange={this.inputChanged}/>
-        </div>
-
-        <p className="error"> {this.props.error} </p>
-
-        {this.props.successMessage && <p className='successMessage'> Registration Successful </p>}
-
-        <div  className="d-flex justify-content-center mt-3 login-container">
-          <input  className="btn login-btn" type="submit" value="Login" onClick={this.login}/>
-        </div>
       </form>
     )
   }

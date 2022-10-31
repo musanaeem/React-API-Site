@@ -11,7 +11,6 @@ const BlogPage = (props) => {
 
     
     const fetchTasksOrRedirect = () => {
-
         blogRequest('GET', state.id).then(data => { 
             if(data.detail){
                 props.changeLoginState(false);
@@ -40,7 +39,6 @@ const BlogPage = (props) => {
             <hr/>
             <h3 className="content"> { blogData.content }</h3>
         </div> 
-      
     </div>
   )
 }

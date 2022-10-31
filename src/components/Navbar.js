@@ -3,22 +3,22 @@ import { Link, useNavigate } from 'react-router-dom'
 import '../components/navbarStyles.css'
 import logoutRequest from '../services/LogoutRequest';
 
-function Navbar(props) {
+const Navbar = (props) => {
 
     const navigate = useNavigate();
 
     const logoutUser = () => {
-        logoutRequest().then( () =>{
+
+        logoutRequest().then(() => {
             window.localStorage.setItem('blogSiteUserLoggedIn', false);
+            window.localStorage.setItem('username', null)
             props.changeLoginState(false);
             navigate('/login');
         });
-        
       }
 
   return (
     <nav >
-
         <div className='nav'>
             <Link to='/home' className='site-title'> Arbisoft Blogs </Link>
             <ul>
@@ -42,10 +42,8 @@ function Navbar(props) {
             }
             </ul>
         </div>
-
-        
-        
     </nav>
+
   )
 }
 

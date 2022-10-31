@@ -1,13 +1,17 @@
 import React from 'react'
 import '../components/recordContainerStyle.css'
 
-const RecordContainer = (props) => {
+import Methods from './Methods';
 
+const RecordContainer = ({recordClassName, type, children, id, data}) => {
   return (
-    <div className={`${props.className} record`}>
+    <div className={`${recordClassName} record`}>
         <div className="labels">
-            {props.children}
-        </div> 
+            {children}
+        </div>
+
+        <Methods  type={type} data={data} id={id}/>
+
     </div>
   )
 }

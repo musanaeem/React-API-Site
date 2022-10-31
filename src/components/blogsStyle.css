@@ -1,6 +1,6 @@
 
-h1.heading {
-    
+.blogListPage .heading {
+
     text-align: center;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -26,5 +26,10 @@ h1.heading {
 
 .author{
     margin-top: 60px;
+}
+
+
+a{
+    text-decoration: none;
 }
 

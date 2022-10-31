@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import InputGroup from './InputGroup';
 
 const RegisterForm = (props) => {
 
@@ -30,7 +31,6 @@ const RegisterForm = (props) => {
 
 
     const inputChanged = event => {
-
         setCredentials({
             ...credentials,
             [event.target.name]: event.target.value
@@ -39,7 +39,6 @@ const RegisterForm = (props) => {
 
     const register = event => {
         event.preventDefault();
-        
         props.onRegister(credentials);
     }
 
@@ -85,7 +84,7 @@ const RegisterForm = (props) => {
     
         return true;
     }
-    
+
     
     const setErrorFor = (input, message) => {
         setFormErrors({
@@ -138,6 +137,7 @@ const RegisterForm = (props) => {
         unlockOrLockSubmit();
     }
     
+
     const isValidEmail = (emailValue) => {
         const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     
@@ -193,74 +193,46 @@ const RegisterForm = (props) => {
 
   return (
     <form action="">
-        <div className="input-group mb-3">
-            <div className="input-group-append">
-                <span className="input-group-text"><i className="fas fa-user"></i></span>
-            </div>
+
+        <InputGroup  className="input-group mb-3"  icon="fas fa-user">
             <input type="text" name="username" placeholder="Username..." className="form-control" value={credentials.username} onChange={inputChanged} onBlur={validateUsername}/>
             <small className='usernameSmall'> {formErrors.username} </small>
-        </div>
-        
-        <div className="input-group mb-2">
-            <div className="input-group-append">
-                <span className="input-group-text"><i className="fas fa-id-badge"></i></span>
-            </div>
+        </InputGroup>
+
+        <InputGroup  className="input-group mb-2"  icon="fas fa-id-badge">
             <input type="text" name="firstName" placeholder="First Name..." className="form-control" value={credentials.firstName} onChange={inputChanged}  onBlur={validateFirstName}/>
             <small className='firstNameSmall'> {formErrors.firstName} </small>
-        </div>
-              
-              
-        <div className="input-group mb-2">
-            <div className="input-group-append">
-                <span className="input-group-text"><i className="fas fa-id-badge"></i></span>
-            </div>
+        </InputGroup>
+       
+        <InputGroup  className="input-group mb-2"  icon="fas fa-id-badge">
             <input type="text" name="lastName" placeholder="Last Name..." className="form-control" value={credentials.lastName} onChange={inputChanged}  onBlur={validateLastName}/>
             <small className='lastNameSmall'> {formErrors.lastName} </small>
+        </InputGroup>
 
-        </div>
-
-
-        <div className="input-group mb-2">
-            <div className="input-group-append">
-                <span className="input-group-text"><i className="fas fa-envelope-square"></i></span>
-            </div>
+        <InputGroup  className="input-group mb-2"  icon="fas fa-envelope-square">
             <input type="text" name="email" placeholder="Email..." className="form-control" value={credentials.email} onChange={inputChanged}  onBlur={validateEmail}/>
             <small className='emailSmall'> {formErrors.email} </small>
-        </div>
-        
-        
-        <div className="input-group mb-2">
-            <div className="input-group-append">
-                <span className="input-group-text"><i className="fas fa-calendar-alt"></i></span>
-            </div>
+        </InputGroup>
+
+        <InputGroup  className="input-group mb-2"  icon="fas fa-calendar-alt">
             <input type="date" name="date_of_birth" placeholder="Date of Birth..." className="form-control" value={credentials.date_of_birth} onChange={inputChanged}  />
-        </div>
-        
-        
-        <div className="input-group mb-2">
-            <div className="input-group-append">
-                <span className="input-group-text"><i className="fas fa-key"></i></span>
-            </div>
+        </InputGroup>
+
+        <InputGroup  className="input-group mb-2"  icon="fas fa-key">
             <input type="password" name="password" placeholder="Password..." className="form-control" value={credentials.password} onChange={inputChanged}  onBlur={validatePasswords}/>
-        </div>
-
-
-        <div className="input-group mb-2">
-            <div className="input-group-append">
-                <span className="input-group-text"><i className="fas fa-key"></i></span>
-            </div>
+        </InputGroup>
+        
+        <InputGroup  className="input-group mb-2"  icon="fas fa-key">
             <input type="password" name="passwordConfirmation" placeholder="Confirm Password..." className="form-control" value={credentials.confirmPassword} onChange={inputChanged}  onBlur={validatePasswords}/>
             <small className='passwordSmall'> {formErrors.passwords} </small>
-
-        </div>
+        </InputGroup>
         
-
         <p className="error"> {props.error} </p>
 
         <div className="d-flex justify-content-center mt-3 login-container">
-          <input className="btn login-btn" type="submit" value="Register" onClick={register} disabled={disabled}/>
+            <input className="btn login-btn" type="submit" value="Register" onClick={register} disabled={disabled}/>
         </div>
-      </form>
+    </form>
   )
 }
 

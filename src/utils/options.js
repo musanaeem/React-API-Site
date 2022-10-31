@@ -7,7 +7,6 @@ const getOptions = (method, body = '') => {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': null,
             'X-CSRFToken': Cookies.get('csrftoken')
         },
         credentials: 'include'
@@ -19,7 +18,9 @@ const getOptions = (method, body = '') => {
             body: JSON.stringify(body)
         }
     }
-        return options
-    }
 
-export default getOptions
+    return options
+}
+
+export default getOptions;
+

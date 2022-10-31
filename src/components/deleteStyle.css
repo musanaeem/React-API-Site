@@ -1,0 +1,24 @@
+.delete-message,
+.delete-form{
+    margin: 35px;
+    text-align: center;
+}
+
+.delete-message{
+    font-size: 20px;
+    margin-top: 140px;
+}
+
+.delete-form{
+    margin-left: 80px;
+}
+
+.delete-username  {
+    font-weight: bold;
+}
+
+.delete-request {
+    margin-left: 120px;
+    border-radius: 10px;
+    width: 7%;
+}

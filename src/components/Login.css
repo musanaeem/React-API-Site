@@ -1,4 +1,4 @@
-.user-card {
+.Authentication-body .user-card {
     margin-top: 150px;
     width: 350px;
     background: #74cfbf;
@@ -21,11 +21,11 @@
     margin-bottom: 10px;
 }
 
-.form-container {
+.Authentication-body .form-container {
     margin-top: 20px;
 }
 
-.form-title {
+.Authentication-body .form-title {
     margin-top: 20px;
     margin-bottom: 20px;
     color: #fff;
