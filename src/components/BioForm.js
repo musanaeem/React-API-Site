@@ -21,8 +21,7 @@ const BioForm = (props) => {
                 address: data.address,
                 description: data.description
             })
-    }
-
+        }
     }, []);
 
     const submitForm = event => {

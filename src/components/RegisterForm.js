@@ -69,7 +69,7 @@ const RegisterForm = (props) => {
             [input]:''
         });
     }
-    
+
     const setErrorFor = (input, message) => {
         setFormErrors({
             ...formErrors,
