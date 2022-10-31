@@ -84,7 +84,7 @@ const RegisterForm = (props) => {
     
         return true;
     }
-    
+
     
     const setErrorFor = (input, message) => {
         setFormErrors({

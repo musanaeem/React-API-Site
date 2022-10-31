@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import bioRequest from '../services/BioRequest';
 import '../components/bioStyle.css'
+
 import RecordContainer from '../components/RecordContainer';
 import CreateButton from '../components/CreateButton';
+
 
 const BioPage = (props) => {
     const navigate = useNavigate();
@@ -12,7 +14,7 @@ const BioPage = (props) => {
     const method = 'GET';
     const body = '';
     const bioText = `'s Bio`;
-    
+
     const fetchBioOrRedirect = () => {
         bioRequest(method, body).then(data => { 
             if(data.detail === "Not found."){
@@ -37,6 +39,7 @@ const BioPage = (props) => {
     
     return (
         <div className='bioPage'>
+
             <h1 className="username"> <span className="user"> {isData && bioData.user_username + bioText} </span></h1>
 
             {isData ? (
@@ -55,7 +58,9 @@ const BioPage = (props) => {
                     <h1 className='notFound'> Data Not Found</h1>
                 </div>
         )}
+
         </div>
+            
     )
 }
 

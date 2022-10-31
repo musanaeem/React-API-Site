@@ -13,7 +13,6 @@ const LoginPage = (props) => {
     const location = useLocation();
     const [error, setError] = useState('');
     const {setUser} = useContext(UserContext); 
-
     const navigate = useNavigate();
 
     let isSuccessMessage = true;
@@ -39,9 +38,11 @@ const LoginPage = (props) => {
     }
 
     return (
+
         <div className='Authentication-body'>
             <FormContainer title='Login' alternateTitle='Register'  accountMessage='Dont have an have an account?' link='/register'>
                 <LoginForm onLogin={logUserIn} error={error}  successMessage={isSuccessMessage}/>
+
             </FormContainer>
         </div>
     )
