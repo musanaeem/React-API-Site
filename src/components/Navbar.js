@@ -18,7 +18,6 @@ const Navbar = (props) => {
 
   return (
     <nav >
-
         <div className='nav'>
             <Link to='/home' className='site-title'> Arbisoft Blogs </Link>
             <ul>
@@ -42,8 +41,6 @@ const Navbar = (props) => {
             }
             </ul>
         </div>
-        
-        
     </nav>
 
   )
