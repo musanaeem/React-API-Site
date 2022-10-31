@@ -8,7 +8,7 @@ const IsEmailValid = (emailValue) => {
                 errorMessage: 'Invalid Email. The email format entered is not valid.'
             };
         }
-    
+
         return {
             isValid: true,
             errorMessage: ''

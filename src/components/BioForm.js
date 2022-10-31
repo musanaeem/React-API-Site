@@ -5,9 +5,7 @@ import bioRequest from '../services/BioRequest';
 const BioForm = (props) => {
 
     const navigate = useNavigate();
-
     const { state } = useLocation();
-
     const [credentials, setCredentials] = useState({
         name: '',
         address: '',

@@ -31,8 +31,6 @@ const RegisterPage = () => {
         });
     }
 
-
-
     return (
         <div className='Authentication-body'>
             <FormContainer title='Register' alternateTitle='Login'  accountMessage='Already have an account?' link='/login'>

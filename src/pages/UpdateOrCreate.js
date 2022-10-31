@@ -5,7 +5,6 @@ import FormContainer from '../components/FormContainer';
 import '../components/createOrUpdateStyle.css'
 
 const UpdateOrCreate = (props) => {
-
     return (
         <div className='UpdateOrCreate'>
             <FormContainer>

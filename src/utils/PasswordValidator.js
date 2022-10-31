@@ -1,7 +1,7 @@
 
 const IsPasswordValid = (passwordValue, passwordConfirmationValue) => {
     const passwordRegex = /(.*[0-9].*[!@#$%^&*()<>?/.,`~].*)|(.*[!@#$%^&*()<>?/.,`~].*[0-9].*)/;
-    
+
     if(passwordValue !== passwordConfirmationValue){
         return {
             isValid: false,

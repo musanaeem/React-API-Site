@@ -9,7 +9,6 @@ const DeleteRecord = (props) => {
     const {state} = useLocation();
     const navigate = useNavigate();
 
-
     const deleteBio = () => {
         bioRequest('DELETE').then( () => {
             navigate('/bio');

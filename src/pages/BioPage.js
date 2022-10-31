@@ -13,7 +13,6 @@ const BioPage = (props) => {
     const [isData, setIsData] = useState(false);
     const method = 'GET';
     const body = '';
-
     const bioText = `'s Bio`;
     
 
@@ -41,7 +40,6 @@ const BioPage = (props) => {
     
     return (
         <div className='bioPage'>
-
             <h1 className="username"> <span className="user"> {isData && bioData.user_username + bioText} </span></h1>
 
             {isData ? (
@@ -53,16 +51,13 @@ const BioPage = (props) => {
                         <h3> Address: { bioData.address }</h3>
                         <h3> Description: { bioData.description }</h3>
                     </RecordContainer>
-
                 </div>
             ): (<div>
                     <CreateButton  path='add'/>
                     <h1 className='notFound'> Data Not Found</h1>
                 </div>
         )}
-
         </div>
-            
     )
 }
 

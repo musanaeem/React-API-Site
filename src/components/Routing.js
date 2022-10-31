@@ -50,7 +50,6 @@ const Routing = () => {
 
                   </Route>
 
-
                   <Route element={<ProtectedRoutes isLoggedIn={isLoggedIn}/> }>
                       <Route path='/home' element={<HomePage/> }/>
 

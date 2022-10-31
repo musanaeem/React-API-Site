@@ -38,7 +38,6 @@ const LoginPage = (props) => {
         });
     }
 
-
     return (
 
         <div className='Authentication-body'>

@@ -10,6 +10,7 @@ const BioMethods = (props) => (
         <Link className="method" to='/bio/delete'  state={{username: props.data.user_username}}> Delete </Link>
     </div>
 );
+
 const BlogMethods = (props) => {
     const {user} = useContext(UserContext);
    
@@ -23,6 +24,7 @@ const BlogMethods = (props) => {
     }
     return null;
 }
+
 const Methods = (props) => {
     return props.type === 'Bio' ? <BioMethods {...props} /> : <BlogMethods {...props}/>;
 }
