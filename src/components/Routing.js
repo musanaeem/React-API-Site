@@ -18,7 +18,6 @@ import { UserContext } from './UserContext';
 
 
 const Routing = () => {
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(window.localStorage.getItem('username'));
 

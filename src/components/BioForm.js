@@ -18,12 +18,12 @@ const BioForm = (props) => {
         if(props.method === 'PATCH'){
             const {data} = state;
 
-        setCredentials({
-            name: data.name,
-            address: data.address,
-            description: data.description
-        })
-    }
+            setCredentials({
+                name: data.name,
+                address: data.address,
+                description: data.description
+            })
+        }
 
     }, []);
 

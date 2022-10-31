@@ -2,7 +2,6 @@ import Cookies from "js-cookie";
 
 const getOptions = (method, body = '') => {
 
-
     let options = {
         method: method,
         headers: {

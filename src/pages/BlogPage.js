@@ -11,7 +11,6 @@ const BlogPage = (props) => {
 
     
     const fetchTasksOrRedirect = () => {
-
         blogRequest('GET', state.id).then(data => { 
             if(data.detail){
                 props.changeLoginState(false);

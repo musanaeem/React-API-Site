@@ -5,9 +5,7 @@ import blogRequest from '../services/BlogRequest';
 const BlogForm = (props) => {
 
     const navigate = useNavigate();
-
     const { state } = useLocation();
-
     const [credentials, setCredentials] = useState({
         title: '',
         content: ''
