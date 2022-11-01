@@ -14,7 +14,6 @@ export default class LoginForm extends Component {
         }
     }
 
-
     inputChanged = event => {
         const credentials = this.state.credentials;
         credentials[event.target.name] = event.target.value;
