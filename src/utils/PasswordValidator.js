@@ -1,5 +1,4 @@
-
-const IsPasswordValid = (passwordValue, passwordConfirmationValue) => {
+const isPasswordValid = (passwordValue, passwordConfirmationValue) => {
     const passwordRegex = /(.*[0-9].*[!@#$%^&*()<>?/.,`~].*)|(.*[!@#$%^&*()<>?/.,`~].*[0-9].*)/;
 
     if(passwordValue !== passwordConfirmationValue){
@@ -27,4 +26,4 @@ const IsPasswordValid = (passwordValue, passwordConfirmationValue) => {
     }
 }
 
-export default IsPasswordValid
+export default isPasswordValid

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import IsEmailValid from '../utils/EmailValidator';
-import IsNameValid from '../utils/NameValidator';
-import IsPasswordValid from '../utils/PasswordValidator';
-import IsUsernameValid from '../utils/UsernameValidator';
+import isEmailValid from '../utils/EmailValidator';
+import isNameValid from '../utils/NameValidator';
+import isPasswordValid from '../utils/PasswordValidator';
+import isUsernameValid from '../utils/UsernameValidator';
 import InputGroup from './InputGroup';
 
 const RegisterForm = (props) => {
@@ -50,7 +50,7 @@ const RegisterForm = (props) => {
         // In case there was already an error displayed
         clearError('username');
         const usernameValue = credentials.username.trim();
-        let username_validity_result = IsUsernameValid(usernameValue)
+        let username_validity_result = isUsernameValid(usernameValue)
 
         setResults({
             ...results,
@@ -81,7 +81,7 @@ const RegisterForm = (props) => {
     const validateFirstName = () => {
         clearError('firstName');
         const firstNameValue = credentials.firstName.trim();
-        let firstNameValidityResult = IsNameValid(firstNameValue)
+        let firstNameValidityResult = isNameValid(firstNameValue)
 
         setResults({
             ...results,
@@ -97,7 +97,7 @@ const RegisterForm = (props) => {
         clearError('lastName');
     
         const lastNameValue = credentials.lastName.trim();
-        let lastNameValidityResult = IsNameValid(lastNameValue)
+        let lastNameValidityResult = isNameValid(lastNameValue)
     
         setResults({
             ...results,
@@ -113,7 +113,7 @@ const RegisterForm = (props) => {
         clearError('email');
     
         const emailValue = credentials.email.trim();
-        let emailValidityResult = IsEmailValid(emailValue)
+        let emailValidityResult = isEmailValid(emailValue)
 
         setResults({
             ...results,
@@ -122,15 +122,15 @@ const RegisterForm = (props) => {
         setErrorFor('email', emailValidityResult.errorMessage);
         unlockOrLockSubmit();
     }
-    
 
+    
     const validatePasswords = () => {
         clearError('passwords');
     
         const passwordValue = credentials.password.trim();
         const passwordConfirmationValue = credentials.passwordConfirmation.trim();
 
-        let passwordsValidityResult = IsPasswordValid(passwordValue, passwordConfirmationValue)
+        let passwordsValidityResult = isPasswordValid(passwordValue, passwordConfirmationValue)
         setResults({
             ...results,
             passwords: passwordsValidityResult.isValid
