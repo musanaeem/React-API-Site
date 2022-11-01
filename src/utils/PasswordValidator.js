@@ -1,6 +1,7 @@
 
 const IsPasswordValid = (passwordValue, passwordConfirmationValue) => {
     const passwordRegex = /(.*[0-9].*[!@#$%^&*()<>?/.,`~].*)|(.*[!@#$%^&*()<>?/.,`~].*[0-9].*)/;
+    const acceptedCharacters = /^[!@#$%^&*()<>?/.,`0-9a-zA-Z]*$/
 
     if(passwordValue !== passwordConfirmationValue){
         return {
@@ -18,6 +19,12 @@ const IsPasswordValid = (passwordValue, passwordConfirmationValue) => {
         return {
             isValid: false,
             errorMessage: "Invalid password. Password should contain numbers and symbols."
+        }
+    }
+    if(!acceptedCharacters.test(passwordValue)){
+        return{
+            isValid: false,
+            errorMessage: 'Invalid password. Password should only contain alphabets, numbers and symbols.'
         }
     }
 

@@ -183,7 +183,7 @@ const RegisterForm = (props) => {
         <p className="error"> {props.error} </p>
 
         <div className="d-flex justify-content-center mt-3 login-container">
-            <input className="btn login-btn" type="submit" value="Register" onClick={register} disabled={disabled}/>
+            <input role ='button' className="btn login-btn" type="submit" value="Register" onClick={register} disabled={disabled}/>
         </div>
     </form>
   )
