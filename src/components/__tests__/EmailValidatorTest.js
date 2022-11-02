@@ -1,4 +1,4 @@
-import IsEmailValid from "../../utils/EmailValidator"
+import isEmailValid from "../../utils/EmailValidator"
 
 
 describe('Email Validation', () => {
@@ -8,7 +8,7 @@ describe('Email Validation', () => {
             isValid: true,
             errorMessage: ''
         }
-        expect(IsEmailValid('musa.naeem@arbisoft.com')).toEqual(result)
+        expect(isEmailValid('musa.naeem@arbisoft.com')).toEqual(result)
     })
 
     test('Returns object with isValid false and errorMessage of format constraint, when @example.com not added', () => {
@@ -16,7 +16,7 @@ describe('Email Validation', () => {
             isValid: false,
             errorMessage: 'Invalid Email. The email format entered is not valid.'
         }
-        expect(IsEmailValid('musa')).toEqual(result)
+        expect(isEmailValid('musa')).toEqual(result)
     })
 
     test('Returns object with isValid false and errorMessage of format constraint, when .com/.net/.pk etc, not added', () => {
@@ -24,7 +24,7 @@ describe('Email Validation', () => {
             isValid: false,
             errorMessage: 'Invalid Email. The email format entered is not valid.'
         }
-        expect(IsEmailValid('musa.naeem@arbisoft')).toEqual(result)
+        expect(isEmailValid('musa.naeem@arbisoft')).toEqual(result)
     })
 
     test('Returns object with isValid false and errorMessage of format constraint, when @ not added', () => {
@@ -32,7 +32,7 @@ describe('Email Validation', () => {
             isValid: false,
             errorMessage: 'Invalid Email. The email format entered is not valid.'
         }
-        expect(IsEmailValid('musa.naeem.arbisoft')).toEqual(result)
+        expect(isEmailValid('musa.naeem.arbisoft')).toEqual(result)
     })
 })
 

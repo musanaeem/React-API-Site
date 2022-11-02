@@ -1,9 +1,9 @@
-import ValidateUsernameOrName from "./ValidateUsernameOrName";
+import validateUsernameOrName from "./ValidateUsernameOrName";
 
-const IsUsernameValid = (usernameValue) => {
+const isUsernameValid = (usernameValue) => {
     const usernameRegex = /^[\w-]+$/;
     const message = "Invalid username entered. Please only use a combination of alphanumeric, _ and -";
-    return ValidateUsernameOrName(usernameValue, usernameRegex, message);  
+    return validateUsernameOrName(usernameValue, usernameRegex, message);  
 }
 
-export default IsUsernameValid
+export default isUsernameValid

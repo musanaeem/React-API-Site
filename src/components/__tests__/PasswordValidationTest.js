@@ -1,4 +1,4 @@
-import IsPasswordValid from "../../utils/PasswordValidator"
+import isPasswordValid from "../../utils/PasswordValidator"
 
 
 describe('Password Validation', () => {
@@ -8,7 +8,7 @@ describe('Password Validation', () => {
             isValid: true,
             errorMessage: ''
         }
-        expect(IsPasswordValid('pass123@','pass123@')).toEqual(result)
+        expect(isPasswordValid('pass123@','pass123@')).toEqual(result)
     })
 
     test('Returns object with isValid false and errorMessage of length constraint', () => {
@@ -16,7 +16,7 @@ describe('Password Validation', () => {
             isValid: false,
             errorMessage: 'Password length should be between 6 and 15 characters.'
         }
-        expect(IsPasswordValid('pass','pass')).toEqual(result)
+        expect(isPasswordValid('pass','pass')).toEqual(result)
     })
 
     test('Returns object with isValid false and errorMessage of number and symbols being mandatory constraint', () => {
@@ -24,7 +24,7 @@ describe('Password Validation', () => {
             isValid: false,
             errorMessage: 'Invalid password. Password should contain numbers and symbols.'
         }
-        expect(IsPasswordValid('password','password')).toEqual(result)
+        expect(isPasswordValid('password','password')).toEqual(result)
     })
 
     test('Returns object with isValid false and errorMessage of number and symbols being mandatory constraint', () => {
@@ -32,7 +32,7 @@ describe('Password Validation', () => {
             isValid: false,
             errorMessage: 'Invalid password. Password should only contain alphabets, numbers and symbols.'
         }
-        expect(IsPasswordValid('number12~@','number12~@')).toEqual(result)
+        expect(isPasswordValid('number12~@','number12~@')).toEqual(result)
     })
 
 })

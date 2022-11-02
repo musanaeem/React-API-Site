@@ -1,4 +1,4 @@
-import IsNameValid from "../../utils/NameValidator"
+import isNameValid from "../../utils/NameValidator"
 
 
 describe('Name Validation', () => {
@@ -8,7 +8,7 @@ describe('Name Validation', () => {
             isValid: true,
             errorMessage: ''
         }
-        expect(IsNameValid('Musa')).toEqual(result)
+        expect(isNameValid('Musa')).toEqual(result)
     })
 
     test('Returns object with isValid false and errorMessage of alphabet constraint, when name has spaces', () => {
@@ -16,7 +16,7 @@ describe('Name Validation', () => {
             isValid: false,
             errorMessage: 'Invalid name entered. Please only use alphabets'
         }
-        expect(IsNameValid('Naeem Ud Din')).toEqual(result)
+        expect(isNameValid('Naeem Ud Din')).toEqual(result)
     })
 
     test('Returns object with isValid false and errorMessage of alphabet constraint, when name has any special characters/hyphens/numbers', () => {
@@ -24,7 +24,7 @@ describe('Name Validation', () => {
             isValid: false,
             errorMessage: 'Invalid name entered. Please only use alphabets'
         }
-        expect(IsNameValid('Naeem-Ud-Din')).toEqual(result)
+        expect(isNameValid('Naeem-Ud-Din')).toEqual(result)
     })
 
     test('Returns object with isValid false and errorMessage of length constraint, when name has any special characters/hyphens/numbers', () => {
@@ -32,7 +32,7 @@ describe('Name Validation', () => {
             isValid: false,
             errorMessage: 'The length should be 3-15 characters. please try again.'
         }
-        expect(IsNameValid('No')).toEqual(result)
+        expect(isNameValid('No')).toEqual(result)
     })
 
 

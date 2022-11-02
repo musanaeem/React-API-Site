@@ -1,4 +1,4 @@
-const ValidateUsernameOrName = (value, regex, message) => {
+const validateUsernameOrName = (value, regex, message) => {
         
     if (value.length < 3 || value.length > 15){
         return {
@@ -20,4 +20,4 @@ const ValidateUsernameOrName = (value, regex, message) => {
     }
 }
 
-export default ValidateUsernameOrName
+export default validateUsernameOrName

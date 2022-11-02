@@ -1,5 +1,5 @@
 
-const IsEmailValid = (emailValue) => {
+const isEmailValid = (emailValue) => {
     const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     
         if(!emailRegex.test(emailValue)){
@@ -15,4 +15,4 @@ const IsEmailValid = (emailValue) => {
         };
 }
 
-export default IsEmailValid
+export default isEmailValid
