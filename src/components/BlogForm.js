@@ -61,7 +61,8 @@ const BlogForm = (props) => {
                 <input className="submit-request" type="submit" name="Submit" onClick={submitForm}/>
             </form>
         </div>
-  )
+    )
+
 }
 
 export default BlogForm

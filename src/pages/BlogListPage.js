@@ -36,7 +36,6 @@ const BlogListPage = (props) => {
         <div className='blogListPage'>
             <h1 className="heading"><span> Blogs </span></h1>
 
-
             <CreateButton  path='add'/>
             {
                 Object.values(blogData).map(blog => (
@@ -49,7 +48,6 @@ const BlogListPage = (props) => {
                         <h3 className="blogs-label"> Content: { blog.content }</h3>
                         <h3 className="author blogs-label"> Author: { blog.user_username }</h3>
                     </RecordContainer>
-
                 ))
             }
         </div>

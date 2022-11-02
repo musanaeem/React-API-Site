@@ -1,4 +1,8 @@
 import React, { useState } from 'react'
+import isEmailValid from '../utils/EmailValidator';
+import isNameValid from '../utils/NameValidator';
+import isPasswordValid from '../utils/PasswordValidator';
+import isUsernameValid from '../utils/UsernameValidator';
 import InputGroup from './InputGroup';
 
 const RegisterForm = (props) => {
@@ -46,10 +50,14 @@ const RegisterForm = (props) => {
         // In case there was already an error displayed
         clearError('username');
         const usernameValue = credentials.username.trim();
+        let username_validity_result = isUsernameValid(usernameValue)
+
         setResults({
             ...results,
-            username: isValidUsername(usernameValue),
+            username: username_validity_result.isValid,
         });
+        setErrorFor('username', username_validity_result.errorMessage);
+
         unlockOrLockSubmit();
     }
 
@@ -61,31 +69,7 @@ const RegisterForm = (props) => {
             [input]:''
         });
     }
-    
-    
-    const isValidUsername = (usernameValue) => {
-        const usernameRegex = /^[\w-]+$/;
-        const message = "Invalid username entered. Please only use a combination of alphanumeric, _ and -";
-        return validationForUsernameOrName(usernameValue, 'username', usernameRegex, message);
-    }
-    
-    
-    const validationForUsernameOrName = (value, input, regex, message) => {
-        
-        if (value.length < 3 || value.length > 15){
-            setErrorFor(input, "The length should be 3-15 characters. please try again.");
-            return false;
-        }
-    
-        if(!regex.test(value)){
-            setErrorFor(input, message);
-            return false;
-        }
-    
-        return true;
-    }
 
-    
     const setErrorFor = (input, message) => {
         setFormErrors({
             ...formErrors,
@@ -97,31 +81,30 @@ const RegisterForm = (props) => {
     const validateFirstName = () => {
         clearError('firstName');
         const firstNameValue = credentials.firstName.trim();
-    
+        let firstNameValidityResult = isNameValid(firstNameValue)
+
         setResults({
             ...results,
-            firstName: isValidName(firstNameValue, 'firstName')
+            firstName: firstNameValidityResult.isValid
         });
+
+        setErrorFor('firstName', firstNameValidityResult.errorMessage);
         unlockOrLockSubmit();
     }
-    
-    
-    const isValidName = (name_value, nameInput) => {
-        const nameRegex = /^[a-z]+$/i;
-        const message = "Invalid name entered. Please only use alphabets";
-        return validationForUsernameOrName(name_value, nameInput, nameRegex, message);
-    
-    }
+
     
     const validateLastName = () => {
         clearError('lastName');
     
         const lastNameValue = credentials.lastName.trim();
+        let lastNameValidityResult = isNameValid(lastNameValue)
     
         setResults({
             ...results,
-            lastName: isValidName(lastNameValue, 'lastName')
+            lastName: lastNameValidityResult.isValid
         });
+        setErrorFor('lastName', lastNameValidityResult.errorMessage);
+
         unlockOrLockSubmit();
     }
 
@@ -130,25 +113,16 @@ const RegisterForm = (props) => {
         clearError('email');
     
         const emailValue = credentials.email.trim();
+        let emailValidityResult = isEmailValid(emailValue)
+
         setResults({
             ...results,
-            email: isValidEmail(emailValue),
+            email: emailValidityResult.isValid
         });
+        setErrorFor('email', emailValidityResult.errorMessage);
         unlockOrLockSubmit();
     }
-    
 
-    const isValidEmail = (emailValue) => {
-        const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-    
-        if(!emailRegex.test(emailValue)){
-            setErrorFor('email', "Invalid Email. The email format entered is not valid.");
-            return false;
-        }
-    
-        return true;
-    }
-    
     
     const validatePasswords = () => {
         clearError('passwords');
@@ -156,35 +130,14 @@ const RegisterForm = (props) => {
         const passwordValue = credentials.password.trim();
         const passwordConfirmationValue = credentials.passwordConfirmation.trim();
 
+        let passwordsValidityResult = isPasswordValid(passwordValue, passwordConfirmationValue)
         setResults({
             ...results,
-            passwords: areValidPasswords(passwordValue, passwordConfirmationValue)
+            passwords: passwordsValidityResult.isValid
         });
+        setErrorFor('passwords', passwordsValidityResult.errorMessage);
         unlockOrLockSubmit();
     }
-    
-    
-    const areValidPasswords = (passwordValue, passwordConfirmationValue) => {
-        const passwordRegex = /(.*[0-9].*[!@#$%^&*()<>?/.,`~].*)|(.*[!@#$%^&*()<>?/.,`~].*[0-9].*)/;
-    
-            if(passwordValue !== passwordConfirmationValue){
-                setErrorFor('passwords', "Password fields do not match. Please try again.");
-                return false;
-            }
-            if(passwordValue.length < 6 || passwordValue.length > 15){
-                setErrorFor('passwords', "Password length should be between 6 and 15 characters.");
-                return false;
-            }
-            if(!passwordRegex.test(passwordValue)){
-                setErrorFor('passwords', "Invalid password. Password should contain numbers and symbols.");
-                return false;
-            }
-    
-            return true;
-    }
-
-
-
 
     const unlockOrLockSubmit = () => {
          setDisabled(!Object.values(results).every((result) => result));

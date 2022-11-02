@@ -5,7 +5,6 @@ import {
 import Routing from './components/Routing';
 
 export default class App extends Component {
-  
   render() {
     return (
       <div className='Container'>

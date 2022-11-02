@@ -9,7 +9,6 @@ const BlogPage = (props) => {
     const [blogData, setBlogData] = useState('');
     const { state } = useLocation();
 
-    
     const fetchTasksOrRedirect = () => {
         blogRequest('GET', state.id).then(data => { 
             if(data.detail){
