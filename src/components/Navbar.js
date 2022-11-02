@@ -15,7 +15,6 @@ const Navbar = (props) => {
             props.changeLoginState(false);
             navigate('/login');
         });
-
       }
 
   return (

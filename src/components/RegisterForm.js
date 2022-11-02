@@ -69,7 +69,7 @@ const RegisterForm = (props) => {
             [input]:''
         });
     }
-    
+
     const setErrorFor = (input, message) => {
         setFormErrors({
             ...formErrors,
@@ -122,8 +122,8 @@ const RegisterForm = (props) => {
         setErrorFor('email', emailValidityResult.errorMessage);
         unlockOrLockSubmit();
     }
-    
 
+    
     const validatePasswords = () => {
         clearError('passwords');
     

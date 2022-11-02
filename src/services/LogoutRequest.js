@@ -1,6 +1,6 @@
 import getOptions from "../utils/options";
 
-const LogoutRequest = () => {
+const logoutRequest = () => {
 
     let options = getOptions('POST');
     const env = process.env;
@@ -14,4 +14,4 @@ const LogoutRequest = () => {
 }
 
 
-export default LogoutRequest
+export default logoutRequest

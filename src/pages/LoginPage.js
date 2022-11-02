@@ -13,7 +13,6 @@ const LoginPage = (props) => {
     const location = useLocation();
     const [error, setError] = useState('');
     const {setUser} = useContext(UserContext); 
-
     const navigate = useNavigate();
 
     let isSuccessMessage = true;

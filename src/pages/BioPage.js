@@ -14,7 +14,6 @@ const BioPage = (props) => {
     const method = 'GET';
     const body = '';
     const bioText = `'s Bio`;
-    
 
     const fetchBioOrRedirect = () => {
         bioRequest(method, body).then(data => { 
